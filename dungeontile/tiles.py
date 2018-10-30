@@ -39,22 +39,22 @@ def MapDraw(list,x,y,map_stage):
     wall=Wall()
     floor=Floor()
     stair=Stair()
-    for i in range(y,y+12):
+    for i in range(y,y+10):
         for j in range(x,x+16):
             if map_stage == 1:
                 if list[i][j]== 'floor':
-                    Floor.image1.clip_draw(0, 0, 41, 41, 25 + (j * 50), 25 + (i * 50), 50, 50)
+                    Floor.image1.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)
                 elif list[i][j]=='wall':
-                    Wall.image1.clip_draw(0, 0, 41, 41, 25 + (j * 50), 25 + (i * 50), 50, 50)
+                    Wall.image1.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)
                 elif list[i][j] == 'stair':
-                    Stair.image1.clip_draw(0, 0, 41, 41, 25 + (j * 50), 25 + (i * 50), 50, 50)
+                    Stair.image1.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)
             elif map_stage == 2:
                 if list[i][j]== 'floor':
-                    Floor.image2.clip_draw(0, 0, 41, 41, 25 + (j * 50), 25 + (i * 50), 50, 50)
+                    Floor.image2.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)
                 elif list[i][j]=='wall':
-                    Wall.image2.clip_draw(0, 0, 41, 41, 25 + (j * 50), 25 + (i * 50), 50, 50)
+                    Wall.image2.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)
                 elif list[i][j] == 'stair':
-                    Stair.image2.clip_draw(0, 0, 41, 41, 25 + (j * 50), 25 + (i * 50), 50, 50)
+                    Stair.image2.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)
 
 
 def handle_events():
