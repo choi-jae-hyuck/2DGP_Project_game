@@ -26,10 +26,18 @@ class IdleState:
         if event == W_DOWN:
             hero.velocity += 1
         elif event == A_DOWN:
-            hero.velocity -= 1
+            hero.velocity += -1
         elif event == S_DOWN:
-            hero.velocity -= -1
+            hero.velocity += -1
         elif event == D_DOWN:
+            hero.velocity += 1
+        elif event == W_UP:
+            hero.velocity += -1
+        elif event == A_UP:
+            hero.velocity += 1
+        elif event == S_UP:
+            hero.velocity += 1
+        elif event == D_UP:
             hero.velocity += -1
 
     @staticmethod
@@ -44,9 +52,9 @@ class IdleState:
     @staticmethod
     def draw(hero):
         if hero.dir == 1:
-            hero.image.clip_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, hero.x, hero.y)
+            hero.image.clip_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, hero.x, hero.y,40,50)
         else:
-            hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1,-3.141592,'v', 40, 55, hero.x, hero.y)
+            hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, -3.141592, 'v', hero.x, hero.y,40, 50)
 
 
 class RunState:
@@ -56,10 +64,18 @@ class RunState:
         if event == W_DOWN:
             hero.velocity += 1
         elif event == A_DOWN:
-            hero.velocity -= 1
+            hero.velocity += -1
         elif event == S_DOWN:
-            hero.velocity -= -1
+            hero.velocity += -1
         elif event == D_DOWN:
+            hero.velocity += 1
+        elif event == W_UP:
+            hero.velocity += -1
+        elif event == A_UP:
+            hero.velocity += 1
+        elif event == S_UP:
+            hero.velocity += 1
+        elif event == D_UP:
             hero.velocity += -1
         hero.dir = clamp(-1,hero.velocity,1)
 
@@ -77,14 +93,14 @@ class RunState:
     @staticmethod
     def draw(hero):
         if hero.dir == 1:
-            hero.image.clip_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, hero.x, hero.y)
+            hero.image.clip_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, hero.x, hero.y,32,50)
         else:
-            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, -3.141592  ,'v', hero.x, hero.y)
+            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, -3.141592 ,'v', hero.x, hero.y,32,50)
 
 
 next_state_table = {
     IdleState: {W_DOWN: RunState, A_DOWN: RunState, S_DOWN: RunState, D_DOWN: RunState,W_UP: IdleState, A_UP: IdleState, S_UP: IdleState, D_UP: IdleState},
-    RunState: {W_DOWN: RunState, A_DOWN: RunState, S_DOWN: RunState, D_DOWN: RunState,W_UP: IdleState, A_UP: IdleState, S_UP: IdleState, D_UP: IdleState}
+    RunState: {W_DOWN: IdleState, A_DOWN: IdleState, S_DOWN: IdleState, D_DOWN: IdleState,W_UP: IdleState, A_UP: IdleState, S_UP: IdleState, D_UP: IdleState}
 }
 
 class HERO:
