@@ -1,15 +1,18 @@
 from pico2d import *
 import random
 
+W_DOWN, A_DOWN, S_DOWN, D_DOWN,W_UP, A_UP, S_UP, D_UP = range(8)
 
-def handle_events():
-    global running
-    events = get_events()
-    for event in events:
-        if event.type == SDL_QUIT:
-            running = False
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
-            running = False
+key_event_table = {
+    (SDL_KEYDOWN, SDLK_w): W_DOWN,
+    (SDL_KEYDOWN, SDLK_a): A_DOWN,
+    (SDL_KEYDOWN, SDLK_s): S_DOWN,
+    (SDL_KEYDOWN, SDLK_d): D_DOWN,
+    (SDL_KEYUP, SDLK_w): W_DOWN,
+    (SDL_KEYUP, SDLK_a): A_DOWN,
+    (SDL_KEYUP, SDLK_s): S_DOWN,
+    (SDL_KEYUP, SDLK_d): D_DOWN
+}
 
 class HERO:
     def __init__(self):
@@ -30,6 +33,11 @@ class HERO:
         elif(self.state==3):
             if(self.frame>6-1):
                 self.frame=0
+                
+    def handle_event(self, event):
+        if (event.type, event.key) in key_event_table:
+            key_event = key_event_table[(event.type, event.key)]
+            self.add_event(key_event)
 
 class STAR:
     def __init__(self):
@@ -54,33 +62,3 @@ class STAR:
         elif(self.state==3):
             if(self.frame>11-1):
                 self.frame=0
-            
-
-
-open_canvas()
-star = STAR()
-hero = HERO()
-
-running = True
-x = 800 // 2
-star_frame=0
-hero_frame = 0
-
-while running:
-    clear_canvas()
-
-    hero.update()
-    star.update()
-
-    hero.draw()
-    star.draw()
-    
-    update_canvas()
-
-    handle_events()
-    
-
-    delay(0.05)
-
-close_canvas()
-
