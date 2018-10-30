@@ -12,7 +12,7 @@ import map
 
 name = "MainState"
 
-boy = None
+hero = None
 
 def enter():
     global hero
