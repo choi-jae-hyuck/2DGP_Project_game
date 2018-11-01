@@ -1,10 +1,10 @@
 from pico2d import *
 import random
 import map
+import hero_star
 import game_framework
 import game_world
 
-global gen
 
 class Floor:
     image1= None
@@ -67,23 +67,5 @@ class Tile:
                     elif self.dungeon.level[i][j] == 'stair':
                         Stair.image2.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)
 
-
-def handle_events():
-    global running
-    events = get_events()
-    for event in events:
-        if event.type == SDL_QUIT:
-            running = False
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
-            running = False
-
-tile=Tile()
-open_canvas()
-running=True
-while running:
-    clear_canvas()
-    tile.draw()
-    update_canvas()
-    handle_events()
-    delay(0.05)
-close_canvas()
+    def update(self):
+        pass
