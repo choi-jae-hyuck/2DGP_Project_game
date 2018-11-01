@@ -4,6 +4,7 @@ import map
 import hero_star
 import game_framework
 import game_world
+import main_state
 
 
 class Floor:
@@ -42,8 +43,8 @@ class Tile:
     def __init__(self):
         self.dungeon=map.Generator()
         self.dungeon.gen_level()
-        self.x=0
-        self.y=0
+        self.x=0 //50
+        self.y=0 //50
         self.mapstage=1
 
     def draw(self):
@@ -68,4 +69,5 @@ class Tile:
                         Stair.image2.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)
 
     def update(self):
-        pass
+        self.x=int(main_state.hero.x//50)
+        self.y=int(main_state.hero.y//50)

@@ -52,9 +52,9 @@ class IdleState:
     @staticmethod
     def draw(hero):
         if hero.dir == 1:
-            hero.image.clip_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, hero.x, hero.y,40,50)
-        else:
             hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, -3.141592, 'v', hero.x, hero.y,40, 50)
+        else:
+            hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, 180*-3.141592, ' ', hero.x, hero.y,40, 50)
 
 
 class RunState:
