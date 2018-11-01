@@ -7,7 +7,6 @@ import game_framework
 import game_world
 
 from hero_star import HERO
-import map
 
 
 name = "MainState"
@@ -15,7 +14,7 @@ name = "MainState"
 hero = None
 
 def enter():
-    global hero
+    global hero, tiles
     hero = HERO()
     game_world.add_object(hero, 0)
 

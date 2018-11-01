@@ -93,9 +93,9 @@ class RunState:
     @staticmethod
     def draw(hero):
         if hero.dir == 1:
-            hero.image.clip_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, hero.x, hero.y,32,50)
+            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, -3.141592, 'v', hero.x, hero.y,32, 50)
         else:
-            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, -3.141592 ,'v', hero.x, hero.y,32,50)
+            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, 180*-3.141592 ,' ', hero.x, hero.y,32,50)
 
 
 next_state_table = {

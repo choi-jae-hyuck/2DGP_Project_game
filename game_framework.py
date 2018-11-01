@@ -87,8 +87,9 @@ import time
 frame_time = 0.0
 
 def run(start_state):
-    global running, stack
+    global running, stack,turn
     running = True
+    turn= True
     stack = [start_state]
     start_state.enter()
 
