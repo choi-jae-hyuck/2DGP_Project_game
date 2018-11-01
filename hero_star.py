@@ -23,22 +23,24 @@ class IdleState:
 
     @staticmethod
     def enter(hero, event):
+        hero.velocity=0
         if event == W_DOWN:
-            hero.velocity += 1
+            hero.velocity += 5
         elif event == A_DOWN:
-            hero.velocity += -1
+            hero.velocity += -5
         elif event == S_DOWN:
-            hero.velocity += -1
+            hero.velocity += -5
         elif event == D_DOWN:
-            hero.velocity += 1
+            hero.velocity += 5
         elif event == W_UP:
-            hero.velocity += -1
+            hero.velocity += -5
         elif event == A_UP:
-            hero.velocity += 1
+            hero.velocity += 5
         elif event == S_UP:
-            hero.velocity += 1
+            hero.velocity += 5
         elif event == D_UP:
-            hero.velocity += -1
+            hero.velocity += -5
+        hero.timer=10
 
     @staticmethod
     def exit(hero, event):
@@ -48,6 +50,9 @@ class IdleState:
     @staticmethod
     def do(hero):
         hero.frame = (hero.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
+        if(hero.timer>0):
+            hero.x+=hero.velocity
+            hero.timer-=1
 
     @staticmethod
     def draw(hero):
@@ -61,23 +66,24 @@ class RunState:
 
     @staticmethod
     def enter(hero, event):
+        hero.velocity = 0
         if event == W_DOWN:
-            hero.velocity += 1
+            hero.velocity += 5
         elif event == A_DOWN:
-            hero.velocity += -1
+            hero.velocity += -5
         elif event == S_DOWN:
-            hero.velocity += -1
+            hero.velocity += -5
         elif event == D_DOWN:
-            hero.velocity += 1
+            hero.velocity += 5
         elif event == W_UP:
-            hero.velocity += -1
+            hero.velocity += -5
         elif event == A_UP:
-            hero.velocity += 1
+            hero.velocity += 5
         elif event == S_UP:
-            hero.velocity += 1
+            hero.velocity += 5
         elif event == D_UP:
-            hero.velocity += -1
-        hero.dir = clamp(-1,hero.velocity,1)
+            hero.velocity += -5
+        hero.dir = clamp(-5,hero.velocity,5)
 
     @staticmethod
     def exit(hero, event):
@@ -87,7 +93,6 @@ class RunState:
     @staticmethod
     def do(hero):
         hero.frame = (hero.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
-        hero.x += hero.velocity * game_framework.frame_time
         hero.x = clamp(25, hero.x, 1600 - 25)
 
     @staticmethod
@@ -110,6 +115,7 @@ class HERO:
         self.frame=0
         self.velocity = 0
         self.dir = 1
+        self.timer=0
         self.image=load_image('hero.png')
         self.event_que = []
         self.cur_state = IdleState
