@@ -50,16 +50,16 @@ class IdleState:
     @staticmethod
     def do(hero):
         hero.frame = (hero.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
-        if(hero.timer>0):
+        if hero.timer>0 :
             hero.x+=hero.velocity
             hero.timer-=1
 
     @staticmethod
     def draw(hero):
         if hero.dir == 5:
-            hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, -3.141592, 'v', hero.x, hero.y,40, 50)
+            hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, -3.141592, 'v', hero.drax, hero.dray,40, 50)
         else:
-            hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, 180*-3.141592, ' ', hero.x, hero.y,40, 50)
+            hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, 180*-3.141592, ' ', hero.drax, hero.dray,40, 50)
 
 
 class RunState:
@@ -98,9 +98,9 @@ class RunState:
     @staticmethod
     def draw(hero):
         if hero.dir == 5:
-            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, -3.141592, 'v', hero.x, hero.y,32, 50)
+            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, -3.141592, 'v', hero.drax, hero.dray,32, 50)
         else:
-            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, 180*-3.141592 ,' ', hero.x, hero.y,32,50)
+            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, 180*-3.141592 ,' ', hero.drax, hero.dray,32,50)
 
 
 next_state_table = {
@@ -111,6 +111,7 @@ next_state_table = {
 class HERO:
     def __init__(self):
         self.x, self.y= 500,100
+        self.drax, self.dray=0,0
         self.state=0
         self.frame=0
         self.velocity = 0
@@ -133,6 +134,14 @@ class HERO:
         self.event_que.insert(0, event)
 
     def update(self):
+        if self.x>400:
+            self.drax=400
+        else :
+            self.drax=self.x
+        if self.y>300:
+            self.dray=300
+        else :
+            self.dray=self.y
         self.cur_state.do(self)
         if len(self.event_que) > 0:
             event = self.event_que.pop()

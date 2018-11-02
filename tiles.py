@@ -50,6 +50,7 @@ class Tile:
         self.mapstage=1
 
     def draw(self):
+        #map 은 60x40임
         wall = Wall()
         floor = Floor()
         stair = Stair()
