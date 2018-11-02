@@ -54,10 +54,13 @@ class Tile:
         wall = Wall()
         floor = Floor()
         stair = Stair()
-        if self.x>5:
-            self.scrollx=self.x-5
-        elif self.y>6:
+        if self.x>8-1:
+            self.scrollx=self.x-7
+        else :
+            self.x=7
+        if self.y>6:
             self.scrolly=self.y-6
+
         for i in range(0,0+10):
             for j in range(0,0+16):
                 if self.mapstage == 1:

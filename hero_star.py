@@ -3,6 +3,7 @@ import random
 import game_framework
 import game_world
 
+
 W_DOWN, A_DOWN, S_DOWN, D_DOWN,W_UP, A_UP, S_UP, D_UP = range(8)
 
 TIME_PER_ACTION = 0.5
@@ -23,24 +24,27 @@ class IdleState:
 
     @staticmethod
     def enter(hero, event):
-        hero.velocity=0
+        hero.vertical = 0
+        hero.horizontal = 0
         if event == W_DOWN:
-            hero.velocity += 5
+            hero.horizontal = 5
         elif event == A_DOWN:
-            hero.velocity += -5
+            hero.vertical = -5
+            hero.dir = False
         elif event == S_DOWN:
-            hero.velocity += -5
+            hero.horizontal = -5
         elif event == D_DOWN:
-            hero.velocity += 5
+            hero.vertical = 5
+            hero.dir = True
         elif event == W_UP:
-            hero.velocity += 5
+            hero.horizontal = 5
         elif event == A_UP:
-            hero.velocity += -5
+            hero.vertical = -5
         elif event == S_UP:
-            hero.velocity += -5
+            hero.horizontal = -5
         elif event == D_UP:
-            hero.velocity += 5
-        hero.timer=10
+            hero.vertical = 5
+
 
     @staticmethod
     def exit(hero, event):
@@ -51,39 +55,49 @@ class IdleState:
     def do(hero):
         hero.frame = (hero.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
         if hero.timer>0 :
-            hero.x+=hero.velocity
+            hero.x+=hero.vertical
+            hero.y += hero.horizontal
             hero.timer-=1
 
     @staticmethod
     def draw(hero):
-        if hero.dir == 5:
-            hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, -3.141592, 'v', hero.drax, hero.dray,40, 50)
-        else:
-            hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, 180*-3.141592, ' ', hero.drax, hero.dray,40, 50)
+        if hero.timer==0:
+            if hero.dir == True:
+                hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, -3.141592, 'v', hero.drax, hero.dray,40, 50)
+            else :
+                hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, 180*-3.141592, ' ', hero.drax, hero.dray,40, 50)
+        else :
+            if hero.dir == True:
+                hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, -3.141592, 'v', hero.drax,hero.dray, 32, 50)
+            else:
+                hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, 180 * -3.141592, ' ',hero.drax, hero.dray, 32, 50)
 
 
 class RunState:
 
     @staticmethod
     def enter(hero, event):
-        hero.velocity = 0
+        hero.vertical = 0
+        hero.horizontal =0
         if event == W_DOWN:
-            hero.velocity += 5
+            hero.horizontal = 5
         elif event == A_DOWN:
-            hero.velocity += -5
+            hero.vertical = -5
+            hero.dir = False
         elif event == S_DOWN:
-            hero.velocity += -5
+            hero.horizontal = -5
         elif event == D_DOWN:
-            hero.velocity += 5
+            hero.vertical = 5
+            hero.dir =True
         elif event == W_UP:
-            hero.velocity += -5
+            hero.horizontal = -5
         elif event == A_UP:
-            hero.velocity += 5
+            hero.horizontal = 5
         elif event == S_UP:
-            hero.velocity += 5
+            hero.vertical = 5
         elif event == D_UP:
-            hero.velocity += -5
-        hero.dir = clamp(-5,hero.velocity,5)
+            hero.vertical = -5
+        hero.timer = 10
 
     @staticmethod
     def exit(hero, event):
@@ -97,7 +111,7 @@ class RunState:
 
     @staticmethod
     def draw(hero):
-        if hero.dir == 5:
+        if hero.dir == True:
             hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, -3.141592, 'v', hero.drax, hero.dray,32, 50)
         else:
             hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, 180*-3.141592 ,' ', hero.drax, hero.dray,32,50)
@@ -110,12 +124,13 @@ next_state_table = {
 
 class HERO:
     def __init__(self):
-        self.x, self.y= 500,100
+        self.x, self.y= 525,125
         self.drax, self.dray=0,0
         self.state=0
         self.frame=0
-        self.velocity = 0
-        self.dir = 1
+        self.vertical = 0
+        self.horizontal=0
+        self.dir = True #true-right false-left
         self.timer=0
         self.image=load_image('hero.png')
         self.event_que = []
@@ -134,12 +149,12 @@ class HERO:
         self.event_que.insert(0, event)
 
     def update(self):
-        if self.x>400:
-            self.drax=400
+        if self.x>425:
+            self.drax=425
         else :
             self.drax=self.x
-        if self.y>300:
-            self.dray=300
+        if self.y>325:
+            self.dray=325
         else :
             self.dray=self.y
         self.cur_state.do(self)

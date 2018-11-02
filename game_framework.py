@@ -40,6 +40,7 @@ class TestGameState:
 
 running = None
 stack = None
+turn =None
 
 
 def change_state(state):
