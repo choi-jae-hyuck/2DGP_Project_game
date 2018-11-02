@@ -14,10 +14,10 @@ key_event_table = {
     (SDL_KEYDOWN, SDLK_a): A_DOWN,
     (SDL_KEYDOWN, SDLK_s): S_DOWN,
     (SDL_KEYDOWN, SDLK_d): D_DOWN,
-    (SDL_KEYUP, SDLK_w): W_DOWN,
-    (SDL_KEYUP, SDLK_a): A_DOWN,
-    (SDL_KEYUP, SDLK_s): S_DOWN,
-    (SDL_KEYUP, SDLK_d): D_DOWN
+    (SDL_KEYUP, SDLK_w): W_UP,
+    (SDL_KEYUP, SDLK_a): A_UP,
+    (SDL_KEYUP, SDLK_s): S_UP,
+    (SDL_KEYUP, SDLK_d): D_UP
 }
 class IdleState:
 
@@ -33,13 +33,13 @@ class IdleState:
         elif event == D_DOWN:
             hero.velocity += 5
         elif event == W_UP:
-            hero.velocity += -5
+            hero.velocity += 5
         elif event == A_UP:
-            hero.velocity += 5
-        elif event == S_UP:
-            hero.velocity += 5
-        elif event == D_UP:
             hero.velocity += -5
+        elif event == S_UP:
+            hero.velocity += -5
+        elif event == D_UP:
+            hero.velocity += 5
         hero.timer=10
 
     @staticmethod
@@ -56,7 +56,7 @@ class IdleState:
 
     @staticmethod
     def draw(hero):
-        if hero.dir == 1:
+        if hero.dir == 5:
             hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, -3.141592, 'v', hero.x, hero.y,40, 50)
         else:
             hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, 180*-3.141592, ' ', hero.x, hero.y,40, 50)
@@ -97,7 +97,7 @@ class RunState:
 
     @staticmethod
     def draw(hero):
-        if hero.dir == 1:
+        if hero.dir == 5:
             hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, -3.141592, 'v', hero.x, hero.y,32, 50)
         else:
             hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, 180*-3.141592 ,' ', hero.x, hero.y,32,50)

@@ -45,27 +45,33 @@ class Tile:
         self.dungeon.gen_level()
         self.x=0 //50
         self.y=0 //50
+        self.scrollx=0
+        self.scrolly=0
         self.mapstage=1
 
     def draw(self):
         wall = Wall()
         floor = Floor()
         stair = Stair()
-        for i in range(self.y,self.y+10):
-            for j in range(self.x,self.x+16):
+        if self.x>5:
+            self.scrollx=self.x-5
+        elif self.y>6:
+            self.scrolly=self.y-6
+        for i in range(0,0+10):
+            for j in range(0,0+16):
                 if self.mapstage == 1:
-                    if self.dungeon.level[i][j]== 'floor':
+                    if self.dungeon.level[self.scrolly+i][self.scrollx+j]== 'floor':
                         Floor.image1.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)
-                    elif self.dungeon.level[i][j]=='wall':
+                    elif self.dungeon.level[self.scrolly+i][self.scrollx+j]=='wall':
                         Wall.image1.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)
-                    elif self.dungeon.level[i][j] == 'stair':
+                    elif self.dungeon.level[self.scrolly+i][self.scrollx+j] == 'stair':
                         Stair.image1.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)
                 elif self.mapstage == 2:
-                    if self.dungeon.level[i][j]== 'floor':
+                    if self.dungeon.level[self.scrolly+i][self.scrollx+j]== 'floor':
                         Floor.image2.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)
-                    elif self.dungeon.level[i][j]=='wall':
+                    elif self.dungeon.level[self.scrolly+i][self.scrollx+j]=='wall':
                         Wall.image2.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)
-                    elif self.dungeon.level[i][j] == 'stair':
+                    elif self.dungeon.level[self.scrolly+i][self.scrollx+j] == 'stair':
                         Stair.image2.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)
 
     def update(self):
