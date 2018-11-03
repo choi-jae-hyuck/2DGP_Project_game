@@ -28,23 +28,31 @@ class IdleState:
         hero.vertical = 0
         hero.horizontal = 0
         if event == W_DOWN:
-            hero.horizontal = 5
+            if main_state.tiles.dungeon.level[int(hero.y//50)+1][int(hero.x//50)] == 'floor':
+                hero.horizontal = 5
         elif event == A_DOWN:
-            hero.vertical = -5
+            if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50)-1] == 'floor':
+                hero.vertical = -5
             hero.dir = False
         elif event == S_DOWN:
-            hero.horizontal = -5
+            if main_state.tiles.dungeon.level[int(hero.y // 50)-1][int(hero.x // 50)] == 'floor':
+                hero.horizontal = -5
         elif event == D_DOWN:
-            hero.vertical = 5
+            if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50)+1] == 'floor':
+                hero.vertical = 5
             hero.dir = True
         elif event == W_UP:
-            hero.horizontal = 5
+            if main_state.tiles.dungeon.level[int(hero.y//50)+1][int(hero.x//50)] == 'floor':
+                hero.horizontal = 5
         elif event == A_UP:
-            hero.vertical = -5
+            if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50)-1] == 'floor':
+                hero.vertical = -5
         elif event == S_UP:
-            hero.horizontal = -5
+            if main_state.tiles.dungeon.level[int(hero.y // 50) - 1][int(hero.x // 50)] == 'floor':
+                hero.horizontal = -5
         elif event == D_UP:
-            hero.vertical = 5
+            if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50) + 1] == 'floor':
+                hero.vertical = 5
 
 
     @staticmethod
