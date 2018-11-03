@@ -15,8 +15,17 @@ hero = None
 
 def enter():
     global hero, tiles
-    hero = HERO()
     tiles= Tile()
+    hero = HERO()
+    start=True
+    while(start):
+        i=random.randint(0,45)
+        j=random.randint(0,60)
+        if tiles.dungeon.level[i][j] == 'floor':
+            hero.x=j*50+25
+            hero.y=i*50+25
+            start=False
+
     game_world.add_object(tiles, 0)
     game_world.add_object(hero, 1)
 
