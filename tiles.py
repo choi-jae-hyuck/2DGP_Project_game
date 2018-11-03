@@ -54,12 +54,16 @@ class Tile:
         wall = Wall()
         floor = Floor()
         stair = Stair()
-        if self.x>8-1:
+        if self.x>8-1 and self.x<52:
             self.scrollx=self.x-7
+        elif self.x>52-1:
+            self.scrollx=44
         else :
             self.x=7
-        if self.y>6:
+        if self.y>6 and self.y<41:
             self.scrolly=self.y-6
+        elif self.y>30:
+            self.scrolly=35
 
         for i in range(0,0+10):
             for j in range(0,0+16):

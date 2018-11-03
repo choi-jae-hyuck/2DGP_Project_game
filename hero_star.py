@@ -1,6 +1,6 @@
+import game_framework
 from pico2d import *
 import random
-import game_framework
 import game_world
 
 
@@ -107,7 +107,6 @@ class RunState:
     @staticmethod
     def do(hero):
         hero.frame = (hero.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
-        hero.x = clamp(25, hero.x, 1600 - 25)
 
     @staticmethod
     def draw(hero):
@@ -136,7 +135,6 @@ class HERO:
         self.event_que = []
         self.cur_state = IdleState
         self.cur_state.enter(self, None)
-
     def handle_event(self, event):
         if (event.type, event.key) in key_event_table:
             key_event = key_event_table[(event.type, event.key)]
@@ -144,17 +142,22 @@ class HERO:
 
     def draw(self):
         self.cur_state.draw(self)
+        print('%f',self.x)
 
     def add_event(self, event):
         self.event_que.insert(0, event)
 
     def update(self):
-        if self.x>425:
+        if self.x>425 and self.x<2575+1:
             self.drax=425
+        elif self.x>2575:
+            self.drax=self.x-2150;
         else :
             self.drax=self.x
-        if self.y>325:
+        if self.y>325 and self.y<2075+1:
             self.dray=325
+        elif self.y>2075 :
+            self.dray=self.y-1750
         else :
             self.dray=self.y
         self.cur_state.do(self)
