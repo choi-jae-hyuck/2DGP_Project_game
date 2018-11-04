@@ -8,15 +8,17 @@ import game_world
 
 from hero_star import HERO
 from tiles import Tile
+from fish import Fish
 
 name = "MainState"
 
 hero = None
 
 def enter():
-    global hero, tiles
+    global hero, tiles,fish
     tiles= Tile()
     hero = HERO()
+    fish = Fish()
     start=True
     while(start):
         i=random.randint(0,45-1)
@@ -28,6 +30,7 @@ def enter():
 
     game_world.add_object(tiles, 0)
     game_world.add_object(hero, 1)
+    game_world.add_object(fish,1)
 
 
 def exit():
