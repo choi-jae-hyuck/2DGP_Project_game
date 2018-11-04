@@ -81,7 +81,7 @@ class IdleState:
             else:
                 hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, 180 * -3.141592, ' ',hero.drax,100+ hero.dray, 32, 50)
 
-
+#
 class RunState:
 
     @staticmethod
