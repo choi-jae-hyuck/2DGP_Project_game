@@ -19,8 +19,8 @@ def enter():
     hero = HERO()
     start=True
     while(start):
-        i=random.randint(0,45)
-        j=random.randint(0,60)
+        i=random.randint(0,45-1)
+        j=random.randint(0,60-1)
         if tiles.dungeon.level[i][j] == 'floor':
             hero.x=j*50+25
             hero.y=i*50+25

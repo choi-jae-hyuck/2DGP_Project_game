@@ -151,8 +151,6 @@ class HERO:
 
     def draw(self):
         self.cur_state.draw(self)
-        print(main_state.tiles.dungeon.level[int(self.y//50)][int(self.x//50)])
-        print(int(125//50))
 
 
     def add_event(self, event):
