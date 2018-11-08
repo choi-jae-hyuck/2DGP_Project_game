@@ -63,10 +63,6 @@ class IdleState:
     @staticmethod
     def do(hero):
         hero.frame = (hero.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
-        if hero.timer>0 :
-            hero.x+=hero.vertical
-            hero.y += hero.horizontal
-            hero.timer-=1
 
     @staticmethod
     def draw(hero):
@@ -89,23 +85,31 @@ class RunState:
         hero.vertical = 0
         hero.horizontal =0
         if event == W_DOWN:
-            hero.horizontal = 5
+            if main_state.tiles.dungeon.level[int(hero.y//50)+1][int(hero.x//50)] == 'floor':
+                hero.horizontal = 5
         elif event == A_DOWN:
-            hero.vertical = -5
+            if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50)-1] == 'floor':
+                hero.vertical = -5
             hero.dir = False
         elif event == S_DOWN:
-            hero.horizontal = -5
+            if main_state.tiles.dungeon.level[int(hero.y // 50)-1][int(hero.x // 50)] == 'floor':
+                hero.horizontal = -5
         elif event == D_DOWN:
-            hero.vertical = 5
-            hero.dir =True
+            if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50)+1] == 'floor':
+                hero.vertical = 5
+            hero.dir = True
         elif event == W_UP:
-            hero.horizontal = -5
+            if main_state.tiles.dungeon.level[int(hero.y//50)+1][int(hero.x//50)] == 'floor':
+                hero.horizontal = 5
         elif event == A_UP:
-            hero.horizontal = 5
+            if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50)-1] == 'floor':
+                hero.vertical = -5
         elif event == S_UP:
-            hero.vertical = 5
+            if main_state.tiles.dungeon.level[int(hero.y // 50) - 1][int(hero.x // 50)] == 'floor':
+                hero.horizontal = -5
         elif event == D_UP:
-            hero.vertical = -5
+            if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50) + 1] == 'floor':
+                hero.vertical = 5
         hero.timer = 10
 
     @staticmethod
@@ -116,6 +120,12 @@ class RunState:
     @staticmethod
     def do(hero):
         hero.frame = (hero.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
+        if hero.timer>0 :
+            hero.x+=hero.vertical
+            hero.y += hero.horizontal
+            hero.timer-=1
+        elif hero.timer==0:
+            hero.add_event(W_UP)
 
     @staticmethod
     def draw(hero):
@@ -126,7 +136,7 @@ class RunState:
 
 
 next_state_table = {
-    IdleState: {W_DOWN: RunState, A_DOWN: RunState, S_DOWN: RunState, D_DOWN: RunState,W_UP: IdleState, A_UP: IdleState, S_UP: IdleState, D_UP: IdleState},
+    IdleState: {W_DOWN: RunState, A_DOWN: RunState, S_DOWN: RunState, D_DOWN: RunState,W_UP: IdleState, A_UP: IdleState, S_UP: IdleState, D_UP: IdleState,},
     RunState: {W_DOWN: IdleState, A_DOWN: IdleState, S_DOWN: IdleState, D_DOWN: IdleState,W_UP: IdleState, A_UP: IdleState, S_UP: IdleState, D_UP: IdleState}
 }
 
@@ -147,7 +157,8 @@ class HERO:
     def handle_event(self, event):
         if (event.type, event.key) in key_event_table:
             key_event = key_event_table[(event.type, event.key)]
-            self.add_event(key_event)
+            if self.timer==0:
+                self.add_event(key_event)
 
     def draw(self):
         self.cur_state.draw(self)
