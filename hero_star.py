@@ -150,7 +150,7 @@ class HERO:
         self.horizontal=0
         self.dir = True #true-right false-left
         self.timer=0
-        self.image=load_image('hero.png')
+        self.image=load_image('Resource\character\hero.png')
         self.event_que = []
         self.cur_state = IdleState
         self.cur_state.enter(self, None)
@@ -192,7 +192,7 @@ class STAR:
         self.x, self.y= 300,100
         self.state=0
         self.frame=0
-        self.image=load_image('star.png')
+        self.image=load_image('Resource\character\star.png')
 
     def draw(self):
         if(self.state==0):# idle
