@@ -27,32 +27,7 @@ class IdleState:
     def enter(hero, event):
         hero.vertical = 0
         hero.horizontal = 0
-        if event == W_DOWN:
-            if main_state.tiles.dungeon.level[int(hero.y//50)+1][int(hero.x//50)] == 'floor':
-                hero.horizontal = 5
-        elif event == A_DOWN:
-            if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50)-1] == 'floor':
-                hero.vertical = -5
-            hero.dir = False
-        elif event == S_DOWN:
-            if main_state.tiles.dungeon.level[int(hero.y // 50)-1][int(hero.x // 50)] == 'floor':
-                hero.horizontal = -5
-        elif event == D_DOWN:
-            if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50)+1] == 'floor':
-                hero.vertical = 5
-            hero.dir = True
-        elif event == W_UP:
-            if main_state.tiles.dungeon.level[int(hero.y//50)+1][int(hero.x//50)] == 'floor':
-                hero.horizontal = 5
-        elif event == A_UP:
-            if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50)-1] == 'floor':
-                hero.vertical = -5
-        elif event == S_UP:
-            if main_state.tiles.dungeon.level[int(hero.y // 50) - 1][int(hero.x // 50)] == 'floor':
-                hero.horizontal = -5
-        elif event == D_UP:
-            if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50) + 1] == 'floor':
-                hero.vertical = 5
+        game_framework.turn = True
 
 
     @staticmethod
@@ -111,6 +86,7 @@ class RunState:
             if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50) + 1] == 'floor':
                 hero.vertical = 5
         hero.timer = 10
+        game_framework.turn=False
 
     @staticmethod
     def exit(hero, event):
@@ -124,8 +100,10 @@ class RunState:
             hero.x+=hero.vertical
             hero.y += hero.horizontal
             hero.timer-=1
+            print(game_framework.turn)
         elif hero.timer==0:
             hero.add_event(W_UP)
+
 
     @staticmethod
     def draw(hero):

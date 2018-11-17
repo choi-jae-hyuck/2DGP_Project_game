@@ -89,7 +89,7 @@ class Fish:
         self.state=1
         self.frame=0
         self.timer=0
-        self.image=load_image('Resouce\character\enemy1.png')
+        self.image=load_image('Resource\character\enemy1.png')
         self.dir=True
         self.event_que = []
         self.cur_state = IdleState
