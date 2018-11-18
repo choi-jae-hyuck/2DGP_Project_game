@@ -30,15 +30,12 @@ class Fish:
     def update(self):
 
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
-
         if(self.state==0):
-            if(self.frame>4-1):
-                self.frame=0
-            self.frame=(self.frame+1)%4
+            self.frame=(self.frame)%4
         elif(self.state==1):
-            self.frame=(self.frame+1)%3
+            self.frame=(self.frame)%3
         elif(self.state==2):
-            self.frame=(self.frame+1)%5
+            self.frame=(self.frame)%5
 
         if game_framework.turn==False:
             pass
