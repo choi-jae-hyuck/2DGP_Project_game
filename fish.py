@@ -16,15 +16,23 @@ class Fish:
         self.frame=0
         self.timer=0
         self.image=load_image('Resource\character\enemy1.png')
-        self.dir=True
+        self.dir=False
 
     def draw(self):
-        if(self.state==0):# idle
-            self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, -3.141592, 'v', self.x, 100 + self.y,50, 50)
-        if(self.state==1):# running
-            self.image.clip_composite_draw(int(self.frame) * 35 ,668, 36, 38, self.x,100+ self.y,50,50)
-        elif(self.state==2): #attack
-            self.image.clip_composite_draw(int(self.frame) * 29+1,708 * 1, 29, 31, self.x,100+ self.y,50,50)
+        if(self.dir==True):
+            if(self.state==0):# idle
+                self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, -3.141592, 'v', self.x, 100 + self.y,50, 50)
+            if(self.state==1):# running
+                self.image.clip_composite_draw(int(self.frame) * 35 ,668, 36, 38, -3.141592, 'v', self.x,100+ self.y,50,50)
+            elif(self.state==2): #attack
+                self.image.clip_composite_draw(int(self.frame) * 29+1,708 * 1, 29, 31, -3.141592, 'v', self.x,100+ self.y,50,50)
+        elif (self.dir == False):
+            if (self.state == 0):  # idle
+                self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, 180 * -3.141592, ' ', self.x,100 + self.y, 50, 50)
+            if (self.state == 1):  # running
+                self.image.clip_composite_draw(int(self.frame) * 35, 668, 36, 38, 180 * -3.141592, ' ', self.x, 100 + self.y, 50, 50)
+            elif (self.state == 2):  # attack
+                self.image.clip_composite_draw(int(self.frame) * 29 + 1, 708 * 1, 29, 31, 180 * -3.141592, ' ', self.x,100 + self.y, 50, 50)
 
 
     def update(self):
