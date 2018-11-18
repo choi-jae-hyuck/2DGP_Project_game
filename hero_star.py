@@ -100,7 +100,6 @@ class RunState:
             hero.x+=hero.vertical
             hero.y += hero.horizontal
             hero.timer-=1
-            print(game_framework.turn)
         elif hero.timer==0:
             hero.add_event(W_UP)
 
