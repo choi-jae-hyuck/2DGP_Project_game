@@ -53,6 +53,21 @@ class Fish:
             else :
                 self.attack=False
 
+            if self.attack==True:
+                pass
+            elif self.attack==False:
+                if self.movement==1:
+                    self.y+=5
+                elif self.movement==2:
+                    self.y-=5
+                elif self.movement==3:
+                    self.x-=5
+                elif self.movement==4:
+                    self.x+=5
+                print(self.x, self.y)
+
+        elif game_framework.turn==True:
+            self.movement = random.randint(1, 4)  # 상하좌우
 
     def handle_event(self, event):
        pass

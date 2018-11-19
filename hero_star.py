@@ -27,7 +27,6 @@ class IdleState:
     def enter(hero, event):
         hero.vertical = 0
         hero.horizontal = 0
-        game_framework.turn = True
 
 
     @staticmethod
@@ -86,7 +85,6 @@ class RunState:
             if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50) + 1] == 'floor':
                 hero.vertical = 5
         hero.timer = 10
-        game_framework.turn=False
 
     @staticmethod
     def exit(hero, event):
@@ -95,12 +93,14 @@ class RunState:
 
     @staticmethod
     def do(hero):
+        game_framework.turn = False
         hero.frame = (hero.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
         if hero.timer>0 :
             hero.x+=hero.vertical
             hero.y += hero.horizontal
             hero.timer-=1
         elif hero.timer==0:
+            game_framework.turn = True
             hero.add_event(W_UP)
 
 
