@@ -17,6 +17,7 @@ class Fish:
         self.timer=0
         self.image=load_image('Resource\character\enemy1.png')
         self.dir=False
+        self.attack=False
 
     def draw(self):
         if(self.dir==True):
@@ -46,7 +47,11 @@ class Fish:
             self.frame=(self.frame)%5
 
         if game_framework.turn==False:
-            pass
+            if main_state.hero.x-50<self.x <main_state.hero.x+50:
+                if main_state.hero.y-50<self.y <main_state.hero.y+50:
+                    self.attack=True
+            else :
+                self.attack=False
 
 
     def handle_event(self, event):
