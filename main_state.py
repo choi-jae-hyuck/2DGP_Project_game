@@ -5,14 +5,15 @@ import os
 from pico2d import *
 import game_framework
 import game_world
+import keyboard_mouse
 
 from hero_star import HERO
 from tiles import Tile
 from fish import Fish
 
 name = "MainState"
-
 hero = None
+mouse =None
 
 def enter():
     global hero, tiles,fish
@@ -35,7 +36,10 @@ def enter():
     game_world.add_object(hero, 1)
     game_world.add_object(fish,1)
 
-
+    global mouse
+    mouse = keyboard_mouse.Mouse()
+    game_world.add_object(mouse, 0)
+    hide_cursor()
 
 def exit():
     game_world.clear()
@@ -49,12 +53,15 @@ def resume():
 
 
 def handle_events():
+    global mouse_x,mouse_y
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
                 game_framework.quit()
+        elif event.type == SDL_MOUSEMOTION:
+                mouse_x,mouse_y = event.x, get_canvas_height() - 1 - event.y
         else:
             hero.handle_event(event)
 
