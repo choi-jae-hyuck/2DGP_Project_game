@@ -36,13 +36,13 @@ class IdleState:
 
     @staticmethod
     def do(hero):
-        hero.frame = (hero.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
+        hero.frame = (hero.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 6
 
     @staticmethod
     def draw(hero):
         if hero.timer==0:
             if hero.dir == True:
-                hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, -3.141592, 'v', hero.drax+25,100+ hero.dray+25,40, 50)
+                hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55,-3.141592, 'v',hero.drax + 25, 100 + hero.dray + 25, 40, 50)
             else :
                 hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, 180*-3.141592, ' ', hero.drax+25,100+ hero.dray+25,40, 50)
         else :
@@ -51,7 +51,7 @@ class IdleState:
             else:
                 hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, 180 * -3.141592, ' ',hero.drax+25,100+ hero.dray+25, 32, 50)
 
-
+# attack hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 405 * 1, 32, 57, -3.141592, 'v', hero.drax+25,100+ hero.dray+25,40, 50)
 class RunState:
 
     @staticmethod
@@ -94,7 +94,7 @@ class RunState:
     @staticmethod
     def do(hero):
         game_framework.turn = False
-        hero.frame = (hero.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
+        hero.frame = (hero.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 6
         if hero.timer>0 :
             hero.x+=hero.vertical
             hero.y += hero.horizontal
@@ -111,10 +111,31 @@ class RunState:
         else:
             hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, 180*-3.141592 ,' ', hero.drax+25,100+ hero.dray+25,32,50)
 
+class AttackState:
+    @staticmethod
+    def enter(hero, event):
+        pass
+
+    @staticmethod
+    def exit(hero, event):
+        if event == None:
+            pass
+
+    @staticmethod
+    def do(hero):
+        hero.frame = (hero.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
+
+    @staticmethod
+    def draw(hero):
+        if hero.dir == True:
+            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 405 * 1, 32, 57, -3.141592, 'v', hero.drax + 25,100 + hero.dray + 25, 40, 50)
+        else:
+            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 405 * 1, 32, 57, 180*-3.141592, ' ', hero.drax + 25,100 + hero.dray + 25, 40, 50)
 
 next_state_table = {
     IdleState: {W_DOWN: RunState, A_DOWN: RunState, S_DOWN: RunState, D_DOWN: RunState,W_UP: IdleState, A_UP: IdleState, S_UP: IdleState, D_UP: IdleState,},
-    RunState: {W_DOWN: IdleState, A_DOWN: IdleState, S_DOWN: IdleState, D_DOWN: IdleState,W_UP: IdleState, A_UP: IdleState, S_UP: IdleState, D_UP: IdleState}
+    RunState: {W_DOWN: IdleState, A_DOWN: IdleState, S_DOWN: IdleState, D_DOWN: IdleState,W_UP: IdleState, A_UP: IdleState, S_UP: IdleState, D_UP: IdleState},
+    AttackState:{W_DOWN: IdleState, A_DOWN: IdleState, S_DOWN: IdleState, D_DOWN: IdleState,W_UP: IdleState, A_UP: IdleState, S_UP: IdleState, D_UP: IdleState}
 }
 
 class HERO:
