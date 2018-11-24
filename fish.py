@@ -20,14 +20,14 @@ class Fish:
         self.attack=False
 
     def draw(self):
-        if(self.dir==True):
+        if self.dir is True and self.y+25-main_state.tiles.scrolly*50+100>100:
             if self.state is 0:# idle
                 self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, -3.141592, 'v', self.x+25-main_state.tiles.scrollx*50,self.y+25-main_state.tiles.scrolly*50+100,45, 45)
             if self.state is 1:# running
                 self.image.clip_composite_draw(int(self.frame) * 35 ,668, 36, 38, -3.141592, 'v', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100,45,45)
             elif self.state is 2: #attack
                 self.image.clip_composite_draw(int(self.frame) * 29+1,708 * 1, 29, 31, -3.141592, 'v', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100,45,45)
-        elif (self.dir == False):
+        elif  self.dir is False and self.y+25-main_state.tiles.scrolly*50+100>100:
             if self.state is 0:  # idle
                 self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, 180 * -3.141592, ' ', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100, 45, 45)
             if self.state is 1:  # running

@@ -19,15 +19,16 @@ def enter():
     tiles= Tile()
     hero = HERO()
     fish = Fish()
+
     start=True
     while(start):
         i=random.randint(0,45-1)
         j=random.randint(0,60-1)
         if tiles.dungeon.level[i][j] == 'floor':
-            #hero.x=j*50+25
-            #hero.y=i*50+25
-            hero.x=300
-            hero.y=300
+            hero.x=j*50
+            hero.y=i*50
+            fish.x=j*50
+            fish.y=i*50
             start=False
 
     game_world.add_object(tiles, 0)
@@ -61,7 +62,7 @@ def handle_events():
 def update():
     for game_object in game_world.all_objects():
         game_object.update()
-    delay(0.01)
+
 
 
 def draw():
