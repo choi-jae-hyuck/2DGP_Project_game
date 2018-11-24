@@ -11,29 +11,29 @@ FRAMES_PER_ACTION = 6
 
 class Fish:
     def __init__(self):
-        self.x, self.y= 300,100
+        self.x, self.y= 500,100
         self.state=0
         self.frame=0
         self.timer=0
         self.image=load_image('Resource\character\enemy1.png')
-        self.dir=False
+        self.dir=True
         self.attack=False
 
     def draw(self):
         if(self.dir==True):
             if self.state is 0:# idle
-                self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, -3.141592, 'v', self.x, 100 + self.y,50, 50)
+                self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, -3.141592, 'v', self.x-main_state.tiles.scrollx*50,self.y-main_state.tiles.scrolly*50,45, 45)
             if self.state is 1:# running
-                self.image.clip_composite_draw(int(self.frame) * 35 ,668, 36, 38, -3.141592, 'v', self.x,100+ self.y,50,50)
+                self.image.clip_composite_draw(int(self.frame) * 35 ,668, 36, 38, -3.141592, 'v', self.x-main_state.tiles.scrollx*50, self.y-main_state.tiles.scrolly*50,45,45)
             elif self.state is 2: #attack
-                self.image.clip_composite_draw(int(self.frame) * 29+1,708 * 1, 29, 31, -3.141592, 'v', self.x,100+ self.y,50,50)
+                self.image.clip_composite_draw(int(self.frame) * 29+1,708 * 1, 29, 31, -3.141592, 'v', self.x-main_state.tiles.scrollx*50, self.y-main_state.tiles.scrolly*50,45,45)
         elif (self.dir == False):
             if self.state is 0:  # idle
-                self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, 180 * -3.141592, ' ', self.x,100 + self.y, 50, 50)
+                self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, 180 * -3.141592, ' ', self.x-main_state.tiles.scrollx*50, self.y-main_state.tiles.scrolly*50, 45, 45)
             if self.state is 1:  # running
-                self.image.clip_composite_draw(int(self.frame) * 35, 668, 36, 38, 180 * -3.141592, ' ', self.x, 100 + self.y, 50, 50)
+                self.image.clip_composite_draw(int(self.frame) * 35, 668, 36, 38, 180 * -3.141592, ' ', self.x-main_state.tiles.scrollx*50,  self.y-main_state.tiles.scrolly*50, 45, 45)
             elif self.state is 2:  # attack
-                self.image.clip_composite_draw(int(self.frame) * 29 + 1, 708 * 1, 29, 31, 180 * -3.141592, ' ', self.x,100 + self.y, 50, 50)
+                self.image.clip_composite_draw(int(self.frame) * 29 + 1, 708 * 1, 29, 31, 180 * -3.141592, ' ', self.x-main_state.tiles.scrollx*50, self.y-main_state.tiles.scrolly*50, 45, 45)
 
 
     def update(self):

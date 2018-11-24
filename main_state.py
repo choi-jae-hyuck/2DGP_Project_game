@@ -32,6 +32,7 @@ def enter():
     game_world.add_object(hero, 1)
     game_world.add_object(fish,1)
 
+    
 
 def exit():
     game_world.clear()
