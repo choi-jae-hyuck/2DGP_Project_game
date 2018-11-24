@@ -11,7 +11,7 @@ FRAMES_PER_ACTION = 6
 
 class Fish:
     def __init__(self):
-        self.x, self.y= 500,100
+        self.x, self.y= 500,400
         self.state=0
         self.frame=0
         self.timer=0
@@ -22,18 +22,18 @@ class Fish:
     def draw(self):
         if(self.dir==True):
             if self.state is 0:# idle
-                self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, -3.141592, 'v', self.x-main_state.tiles.scrollx*50,self.y-main_state.tiles.scrolly*50,45, 45)
+                self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, -3.141592, 'v', self.x+25-main_state.tiles.scrollx*50,self.y+25-main_state.tiles.scrolly*50+100,45, 45)
             if self.state is 1:# running
-                self.image.clip_composite_draw(int(self.frame) * 35 ,668, 36, 38, -3.141592, 'v', self.x-main_state.tiles.scrollx*50, self.y-main_state.tiles.scrolly*50,45,45)
+                self.image.clip_composite_draw(int(self.frame) * 35 ,668, 36, 38, -3.141592, 'v', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100,45,45)
             elif self.state is 2: #attack
-                self.image.clip_composite_draw(int(self.frame) * 29+1,708 * 1, 29, 31, -3.141592, 'v', self.x-main_state.tiles.scrollx*50, self.y-main_state.tiles.scrolly*50,45,45)
+                self.image.clip_composite_draw(int(self.frame) * 29+1,708 * 1, 29, 31, -3.141592, 'v', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100,45,45)
         elif (self.dir == False):
             if self.state is 0:  # idle
-                self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, 180 * -3.141592, ' ', self.x-main_state.tiles.scrollx*50, self.y-main_state.tiles.scrolly*50, 45, 45)
+                self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, 180 * -3.141592, ' ', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100, 45, 45)
             if self.state is 1:  # running
-                self.image.clip_composite_draw(int(self.frame) * 35, 668, 36, 38, 180 * -3.141592, ' ', self.x-main_state.tiles.scrollx*50,  self.y-main_state.tiles.scrolly*50, 45, 45)
+                self.image.clip_composite_draw(int(self.frame) * 35, 668, 36, 38, 180 * -3.141592, ' ', self.x+25-main_state.tiles.scrollx*50,  self.y+25-main_state.tiles.scrolly*50+100, 45, 45)
             elif self.state is 2:  # attack
-                self.image.clip_composite_draw(int(self.frame) * 29 + 1, 708 * 1, 29, 31, 180 * -3.141592, ' ', self.x-main_state.tiles.scrollx*50, self.y-main_state.tiles.scrolly*50, 45, 45)
+                self.image.clip_composite_draw(int(self.frame) * 29 + 1, 708 * 1, 29, 31, 180 * -3.141592, ' ', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100, 45, 45)
 
 
     def update(self):
@@ -45,13 +45,9 @@ class Fish:
             self.frame=(self.frame)%3
         elif self.state is 2:
             self.frame=(self.frame)%5
+        print(self.x, self.y)
 
         if game_framework.turn is False:
-            if main_state.hero.x-50<self.x <main_state.hero.x+50:
-                if main_state.hero.y-50<self.y <main_state.hero.y+50:
-                    self.attack=True
-            else :
-                self.attack=False
 
             if self.attack is True:
                 pass
@@ -64,10 +60,25 @@ class Fish:
                     self.x-=5
                 elif self.movement is 4:
                     self.x+=5
-                print(self.x, self.y)
+
 
         elif game_framework.turn is True:
-            self.movement = random.randint(1, 4)  # 상하좌우
+            while True:
+                self.movement = random.randint(1, 4)  # 상하좌우
+                if self.movement is 1 and main_state.tiles.dungeon.level[self.y // 50 + 1][self.x // 50] is 'floor':
+                    break
+                elif self.movement is 2 and main_state.tiles.dungeon.level[self.y // 50 - 1][self.x // 50] is 'floor':
+                    break
+                elif self.movement is 3 and main_state.tiles.dungeon.level[self.y // 50][self.x // 50 - 1] is 'floor':
+                    break
+                elif self.movement is 4 and main_state.tiles.dungeon.level[self.y // 50][self.x // 50 + 1] is 'floor':
+                    break
+
+            if main_state.hero.x-50<self.x <main_state.hero.x+50:
+                if main_state.hero.y-50<self.y <main_state.hero.y+50:
+                    self.attack=True
+            else :
+                self.attack=False
 
     def handle_event(self, event):
        pass

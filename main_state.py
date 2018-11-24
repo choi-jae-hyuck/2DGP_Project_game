@@ -24,15 +24,17 @@ def enter():
         i=random.randint(0,45-1)
         j=random.randint(0,60-1)
         if tiles.dungeon.level[i][j] == 'floor':
-            hero.x=j*50+25
-            hero.y=i*50+25
+            #hero.x=j*50+25
+            #hero.y=i*50+25
+            hero.x=300
+            hero.y=300
             start=False
 
     game_world.add_object(tiles, 0)
     game_world.add_object(hero, 1)
     game_world.add_object(fish,1)
 
-    
+
 
 def exit():
     game_world.clear()

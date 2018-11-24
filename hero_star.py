@@ -42,14 +42,14 @@ class IdleState:
     def draw(hero):
         if hero.timer==0:
             if hero.dir == True:
-                hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, -3.141592, 'v', hero.drax,100+ hero.dray,40, 50)
+                hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, -3.141592, 'v', hero.drax+25,100+ hero.dray+25,40, 50)
             else :
-                hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, 180*-3.141592, ' ', hero.drax,100+ hero.dray,40, 50)
+                hero.image.clip_composite_draw(int(hero.frame) * 41 + 1, 1140 * 1, 40, 55, 180*-3.141592, ' ', hero.drax+25,100+ hero.dray+25,40, 50)
         else :
             if hero.dir == True:
-                hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, -3.141592, 'v', hero.drax,100+hero.dray, 32, 50)
+                hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, -3.141592, 'v', hero.drax+25,100+hero.dray+25, 32, 50)
             else:
-                hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, 180 * -3.141592, ' ',hero.drax,100+ hero.dray, 32, 50)
+                hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, 180 * -3.141592, ' ',hero.drax+25,100+ hero.dray+25, 32, 50)
 
 
 class RunState:
@@ -107,9 +107,9 @@ class RunState:
     @staticmethod
     def draw(hero):
         if hero.dir == True:
-            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, -3.141592, 'v', hero.drax,100+ hero.dray,32, 50)
+            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, -3.141592, 'v', hero.drax+25,100+ hero.dray+25,32, 50)
         else:
-            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, 180*-3.141592 ,' ', hero.drax,100+ hero.dray,32,50)
+            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, 180*-3.141592 ,' ', hero.drax+25,100+ hero.dray+25,32,50)
 
 
 next_state_table = {
@@ -145,15 +145,15 @@ class HERO:
         self.event_que.insert(0, event)
 
     def update(self):
-        if self.x>425 and self.x<2625+1:
-            self.drax=425
-        elif self.x>2625:
+        if self.x>400 and self.x<2600+1:
+            self.drax=400
+        elif self.x>2600:
             self.drax=self.x-2200;
         else :
             self.drax=self.x
-        if self.y>325 and self.y<2075+1:
-            self.dray=325
-        elif self.y>2075 :
+        if self.y>300 and self.y<2050+1:
+            self.dray=300
+        elif self.y>2050 :
             self.dray=self.y-1750
         else :
             self.dray=self.y
