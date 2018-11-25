@@ -61,16 +61,24 @@ class RunState:
         hero.horizontal =0
         if event == W_DOWN:
             if main_state.number[int(hero.y//50)+1][int(hero.x//50)] is 0:
+                main_state.number[int(hero.y // 50) + 1][int(hero.x // 50)] = 1
+                main_state.number[int(hero.y // 50)][int(hero.x // 50)] = 0
                 hero.horizontal = 5
         elif event == A_DOWN:
             if main_state.number[int(hero.y // 50)][int(hero.x // 50)-1] is 0:
+                main_state.number[int(hero.y // 50)][int(hero.x // 50)-1] = 1
+                main_state.number[int(hero.y // 50)][int(hero.x // 50)] = 0
                 hero.vertical = -5
             hero.dir = False
         elif event == S_DOWN:
             if main_state.number[int(hero.y // 50)-1][int(hero.x // 50)] is 0:
+                main_state.number[int(hero.y // 50) - 1][int(hero.x // 50)] = 1
+                main_state.number[int(hero.y // 50)][int(hero.x // 50)] = 0
                 hero.horizontal = -5
         elif event == D_DOWN:
             if main_state.number[int(hero.y // 50)][int(hero.x // 50)+1] is 0:
+                main_state.number[int(hero.y // 50)][int(hero.x // 50)+1] = 1
+                main_state.number[int(hero.y // 50)][int(hero.x // 50)] = 0
                 hero.vertical = 5
             hero.dir = True
         elif event == W_UP:
