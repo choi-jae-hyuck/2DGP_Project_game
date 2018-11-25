@@ -14,12 +14,13 @@ from fish import Fish
 name = "MainState"
 hero = None
 mouse =None
+fish=[]
 
 def enter():
     global hero, tiles,fish
     tiles= Tile()
     hero = HERO()
-    fish = Fish()
+    fish = [Fish() for i in range(10)]
 
     start=True
     while(start):
@@ -28,13 +29,12 @@ def enter():
         if tiles.dungeon.level[i][j] == 'floor':
             hero.x=j*50
             hero.y=i*50
-            fish.x=j*50
-            fish.y=i*50
+
             start=False
 
     game_world.add_object(tiles, 0)
     game_world.add_object(hero, 1)
-    game_world.add_object(fish,1)
+    game_world.add_objects(fish,1)
 
     global mouse
     mouse = keyboard_mouse.Mouse()
