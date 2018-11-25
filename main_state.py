@@ -16,6 +16,8 @@ hero = None
 mouse =None
 number =[]
 fish=[]
+global mouse_x,mouse_y
+mouse_x,mouse_y=0,0
 
 def enter():
     global hero, tiles,fish
