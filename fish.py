@@ -66,14 +66,18 @@ class Fish:
         elif game_framework.turn is True:
             while True:
                 self.movement = random.randint(1, 4)  # 상하좌우
-                if self.movement is 1 and main_state.tiles.dungeon.level[self.y // 50 + 1][self.x // 50] is 'floor':
-                    break
-                elif self.movement is 2 and main_state.tiles.dungeon.level[self.y // 50 - 1][self.x // 50] is 'floor':
-                    break
-                elif self.movement is 3 and main_state.tiles.dungeon.level[self.y // 50][self.x // 50 - 1] is 'floor':
-                    break
-                elif self.movement is 4 and main_state.tiles.dungeon.level[self.y // 50][self.x // 50 + 1] is 'floor':
-                    break
+                if self.movement is 1 and self.y<44*50:
+                    if main_state.number[self.y // 50 + 1][self.x // 50] is 0:
+                        break
+                elif self.movement is 2 and self.y>0*50:
+                    if main_state.number[self.y // 50 - 1][self.x // 50] is 0:
+                        break
+                elif self.movement is 3 and self.x>0*50:
+                    if main_state.number[self.y // 50][self.x // 50 - 1] is 0:
+                        break
+                elif self.movement is 4 and self.x<59*50:
+                    if main_state.number[self.y // 50][self.x // 50 + 1] is 0:
+                        break
 
             if main_state.hero.x-50<self.x <main_state.hero.x+50:
                 if main_state.hero.y-50<self.y <main_state.hero.y+50:
