@@ -5,7 +5,7 @@ import game_world
 
 import main_state # map.값 확인후 제거
 
-W_DOWN, A_DOWN, S_DOWN, D_DOWN,W_UP, A_UP, S_UP, D_UP = range(8)
+W_DOWN, A_DOWN, S_DOWN, D_DOWN,W_UP, A_UP, S_UP, D_UP, Left_Click= range(9)
 
 TIME_PER_ACTION = 0.5
 ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
@@ -19,7 +19,8 @@ key_event_table = {
     (SDL_KEYUP, SDLK_w): W_UP,
     (SDL_KEYUP, SDLK_a): A_UP,
     (SDL_KEYUP, SDLK_s): S_UP,
-    (SDL_KEYUP, SDLK_d): D_UP
+    (SDL_KEYUP, SDLK_d): D_UP,
+    (SDL_MOUSEBUTTONDOWN,SDL_BUTTON_LEFT): Left_Click
 }
 class IdleState:
 
