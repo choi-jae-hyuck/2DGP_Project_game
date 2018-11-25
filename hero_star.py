@@ -36,6 +36,7 @@ class IdleState:
 
     @staticmethod
     def do(hero):
+        print(hero.x, hero.y)
         hero.frame = (hero.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 6
 
     @staticmethod
@@ -59,30 +60,30 @@ class RunState:
         hero.vertical = 0
         hero.horizontal =0
         if event == W_DOWN:
-            if main_state.tiles.dungeon.level[int(hero.y//50)+1][int(hero.x//50)] == 'floor':
+            if main_state.number[int(hero.y//50)+1][int(hero.x//50)] is 0:
                 hero.horizontal = 5
         elif event == A_DOWN:
-            if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50)-1] == 'floor':
+            if main_state.number[int(hero.y // 50)][int(hero.x // 50)-1] is 0:
                 hero.vertical = -5
             hero.dir = False
         elif event == S_DOWN:
-            if main_state.tiles.dungeon.level[int(hero.y // 50)-1][int(hero.x // 50)] == 'floor':
+            if main_state.number[int(hero.y // 50)-1][int(hero.x // 50)] is 0:
                 hero.horizontal = -5
         elif event == D_DOWN:
-            if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50)+1] == 'floor':
+            if main_state.number[int(hero.y // 50)][int(hero.x // 50)+1] is 0:
                 hero.vertical = 5
             hero.dir = True
         elif event == W_UP:
-            if main_state.tiles.dungeon.level[int(hero.y//50)+1][int(hero.x//50)] == 'floor':
+            if main_state.number[int(hero.y//50)+1][int(hero.x//50)] is 0:
                 hero.horizontal = 5
         elif event == A_UP:
-            if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50)-1] == 'floor':
+            if main_state.number[int(hero.y // 50)][int(hero.x // 50)-1] is 0:
                 hero.vertical = -5
         elif event == S_UP:
-            if main_state.tiles.dungeon.level[int(hero.y // 50) - 1][int(hero.x // 50)] == 'floor':
+            if main_state.number[int(hero.y // 50) - 1][int(hero.x // 50)] is 0:
                 hero.horizontal = -5
         elif event == D_UP:
-            if main_state.tiles.dungeon.level[int(hero.y // 50)][int(hero.x // 50) + 1] == 'floor':
+            if main_state.number[int(hero.y // 50)][int(hero.x // 50) + 1] is 0:
                 hero.vertical = 5
         hero.timer = 10
 

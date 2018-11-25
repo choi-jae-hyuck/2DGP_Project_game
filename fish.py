@@ -46,7 +46,7 @@ class Fish:
             self.frame=(self.frame)%3
         elif self.state is 2:
             self.frame=(self.frame)%5
-        print(self.x, self.y)
+
 
         if game_framework.turn is False:
 

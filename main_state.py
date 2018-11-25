@@ -25,8 +25,8 @@ def enter():
 
     global number
     number = [[0] * 60 for i in range(45)]
-    for i in range(0,45-1):
-        for j in range(0,60-1):
+    for i in range(0,45):
+        for j in range(0,60):
             if tiles.dungeon.level[i][j] is 'floor':
                 number[i][j]=0
             elif tiles.dungeon.level[i][j] is 'stone':
@@ -36,8 +36,8 @@ def enter():
 
     start = True
     while (start):#hero setting
-        i = random.randint(0+1, 45 - 2)
-        j = random.randint(0+1, 60 - 2)
+        i = random.randint(0+1, 45 - 1)
+        j = random.randint(0+1, 60 - 1)
         if number[i][j] is 0:
             hero.x = j * 50
             hero.y = i * 50
@@ -45,8 +45,8 @@ def enter():
             start = False
     for k in range(10):
         while(fish[k].setting is False):
-            i = random.randint(0+1, 45 - 2)
-            j = random.randint(0+1, 60 - 2)
+            i = random.randint(0+1, 45 - 1)
+            j = random.randint(0+1, 60 - 1)
             if number[i][j] is 0 and fish[k].setting is False:
                 fish[k].x = j * 50
                 fish[k].y = i * 50
