@@ -14,6 +14,7 @@ from fish import Fish
 name = "MainState"
 hero = None
 mouse =None
+number =[]
 fish=[]
 
 def enter():
@@ -22,15 +23,37 @@ def enter():
     hero = HERO()
     fish = [Fish() for i in range(10)]
 
-    start=True
-    while(start):
-        i=random.randint(0,45-1)
-        j=random.randint(0,60-1)
-        if tiles.dungeon.level[i][j] == 'floor':
-            hero.x=j*50
-            hero.y=i*50
+    global number
+    number = [[0] * 60 for i in range(45)]
+    for i in range(0,45-1):
+        for j in range(0,60-1):
+            if tiles.dungeon.level[i][j] is 'floor':
+                number[i][j]=0
+            elif tiles.dungeon.level[i][j] is 'stone':
+                number[i][j]=9
+            elif tiles.dungeon.level[i][j] is 'wall':
+                number[i][j]=9
 
-            start=False
+    start = True
+    while (start):#hero setting
+        i = random.randint(0, 45 - 1)
+        j = random.randint(0, 60 - 1)
+        if number[i][j] is 0:
+            hero.x = j * 50
+            hero.y = i * 50
+            number[i][j]=1
+            start = False
+    for k in range(10):
+        while(fish[k].setting is False):
+            i = random.randint(0, 45 - 1)
+            j = random.randint(0, 60 - 1)
+            if number[i][j] is 0 and fish[k].setting is False:
+                fish[k].x = j * 50
+                fish[k].y = i * 50
+                number[i][j] = 2
+                fish[k].setting=True
+
+
 
     game_world.add_object(tiles, 0)
     game_world.add_object(hero, 1)

@@ -18,6 +18,7 @@ class Fish:
         self.image=load_image('Resource\character\enemy1.png')
         self.dir=True
         self.attack=False
+        self.setting=False
 
     def draw(self):
         if self.dir is True and self.y+25-main_state.tiles.scrolly*50+100>100:
