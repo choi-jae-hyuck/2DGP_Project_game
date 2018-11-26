@@ -12,6 +12,7 @@ FRAMES_PER_ACTION = 6
 class Fish:
     def __init__(self):
         self.x, self.y= 500,400
+        self.HP=10
         self.state=0
         self.frame=0
         self.timer=0

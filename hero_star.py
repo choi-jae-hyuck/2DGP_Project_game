@@ -53,7 +53,6 @@ class IdleState:
             else:
                 hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 1081 * 1, 32, 57, 180 * -3.141592, ' ',hero.drax+25,100+ hero.dray+25, 32, 50)
 
-# attack hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 405 * 1, 32, 57, -3.141592, 'v', hero.drax+25,100+ hero.dray+25,40, 50)
 class RunState:
 
     @staticmethod
@@ -151,6 +150,7 @@ next_state_table = {
 class HERO:
     def __init__(self):
         self.x, self.y= 500,100
+        self.HP=100
         self.drax, self.dray=0,0
         self.state=0
         self.frame=0

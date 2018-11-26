@@ -5,6 +5,7 @@ import main_state
 class Mouse:
     def __init__(self):
         self.x, self.y = 0,0
+        self.HP=1#dummy
         self.cursor=None
         self.fist=None
         self.select=False #false = cursor , True = fist

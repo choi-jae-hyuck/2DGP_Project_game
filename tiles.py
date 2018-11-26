@@ -45,6 +45,7 @@ class Tile:
         self.dungeon.gen_level()
         self.x=0 //50
         self.y=0 //50
+        self.HP=1#dummy
         self.scrollx=0
         self.scrolly=0
         self.mapstage=1
