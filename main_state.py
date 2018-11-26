@@ -63,7 +63,7 @@ def enter():
 
     global mouse
     mouse = keyboard_mouse.Mouse()
-    game_world.add_object(mouse, 0)
+    game_world.add_object(mouse, 1)
     hide_cursor()
 
 def exit():

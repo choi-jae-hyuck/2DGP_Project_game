@@ -7,6 +7,7 @@ class Mouse:
         self.x, self.y = 0,0
         self.cursor=None
         self.fist=None
+        self.select=False #false = cursor , True = fist
         if self.cursor is None:
             self.cursor=load_image('Resource\Mouse_cursor.png')
         if self.fist is None:
@@ -15,8 +16,10 @@ class Mouse:
     def update(self):
         self.x, self.y= main_state.mouse_x,main_state.mouse_y
     def draw(self):
-        self.cursor.clip_composite_draw(0, 0, 462, 543, 1, ' ', self.x + 10, self.y - 15, 30, 30)
-        self.fist.clip_composite_draw(0, 0, 111, 112, 0, ' ', self.x + 10, self.y - 15, 30, 30)
+        if self.select is True:
+            self.fist.clip_composite_draw(0, 0, 111, 112, 0, ' ', self.x + 10, self.y - 15, 30, 30)
+        else:
+            self.cursor.clip_composite_draw(0, 0, 462, 543, 1, ' ', self.x + 10, self.y - 15, 30, 30)
 
 
 class Keyboard:
