@@ -19,6 +19,7 @@ class Fish:
         self.dir=True
         self.attack=False
         self.setting=False
+        self.doing_first=True
 
     def draw(self):
         if self.dir is True and self.y+25-main_state.tiles.scrolly*50+100>100:
@@ -54,17 +55,34 @@ class Fish:
                 pass
             elif self.attack is False:
                 if self.movement is 1:
+                    if self.doing_first is True:
+                        main_state.number[self.y // 50 + 1][self.x // 50]=2
+                        main_state.number[self.y // 50][self.x // 50]=0
+                        self.doing_first=False
                     self.y+=5
                 elif self.movement is 2:
+                    if self.doing_first is True:
+                        main_state.number[self.y // 50 - 1][self.x // 50]=2
+                        main_state.number[self.y // 50][self.x // 50]=0
+                        self.doing_first=False
                     self.y-=5
                 elif self.movement is 3:
+                    if self.doing_first is True:
+                        main_state.number[self.y // 50][self.x // 50-1]=2
+                        main_state.number[self.y // 50][self.x // 50]=0
+                        self.doing_first=False
                     self.x-=5
                 elif self.movement is 4:
+                    if self.doing_first is True:
+                        main_state.number[self.y // 50][self.x // 50+1]=2
+                        main_state.number[self.y // 50][self.x // 50]=0
+                        self.doing_first=False
                     self.x+=5
 
 
         elif game_framework.turn is True:
             while True:
+                self.doing_first=True
                 self.movement = random.randint(1, 4)  # 상하좌우
                 if self.movement is 1 and self.y<44*50:
                     if main_state.number[self.y // 50 + 1][self.x // 50] is 0:
@@ -79,8 +97,8 @@ class Fish:
                     if main_state.number[self.y // 50][self.x // 50 + 1] is 0:
                         break
 
-            if main_state.hero.x-50<self.x <main_state.hero.x+50:
-                if main_state.hero.y-50<self.y <main_state.hero.y+50:
+            if main_state.hero.x-50<=self.x <=main_state.hero.x+50:
+                if main_state.hero.y-50<=self.y <=main_state.hero.y+50:
                     self.attack=True
             else :
                 self.attack=False
