@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9cc58b60-1f79-4c61-9572-35e7a2b92bca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hero_star.py" beforeDir="false" afterPath="$PROJECT_DIR$/hero_star.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/keyboard_mouse.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboard_mouse.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -71,12 +72,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="7588" />
+          <entry key="py" value="7701" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="7588" />
+          <entry key="Python" value="7701" />
         </counts>
       </usages-collector>
     </session>
@@ -107,14 +108,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/keyboard_mouse.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="17" column="121" selection-start-line="17" selection-start-column="121" selection-end-line="17" selection-end-column="121" />
+            <state relative-caret-position="342">
+              <caret line="18" column="110" selection-start-line="18" selection-start-column="110" selection-end-line="18" selection-end-column="110" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
-                <marker date="1543239215552" expanded="true" signature="242:306" ph="..." />
-                <marker date="1543239215552" expanded="true" signature="420:683" ph="..." />
-                <marker date="1543239215552" expanded="true" signature="947:948" ph="..." />
-                <marker date="1543239215552" expanded="true" signature="947:949" ph="..." />
+                <marker date="1543240451874" expanded="true" signature="242:306" ph="..." />
+                <marker date="1543240451874" expanded="true" signature="420:769" ph="..." />
+                <marker date="1543240451874" expanded="true" signature="1033:1034" ph="..." />
+                <marker date="1543240451874" expanded="true" signature="1033:1035" ph="..." />
               </folding>
             </state>
           </provider>
@@ -146,8 +147,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hero_star.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1007">
-              <caret line="94" column="79" selection-start-line="94" selection-start-column="79" selection-end-line="94" selection-end-column="79" />
+            <state relative-caret-position="-589">
+              <caret line="152" column="31" selection-start-line="152" selection-start-column="31" selection-end-line="152" selection-end-column="31" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -158,7 +159,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mygame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
+            <state relative-caret-position="95">
               <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -214,9 +215,9 @@
         <option value="$PROJECT_DIR$/tiles.py" />
         <option value="$PROJECT_DIR$/mygame.py" />
         <option value="$PROJECT_DIR$/game_world.py" />
-        <option value="$PROJECT_DIR$/hero_star.py" />
         <option value="$PROJECT_DIR$/fish.py" />
         <option value="$PROJECT_DIR$/main_state.py" />
+        <option value="$PROJECT_DIR$/hero_star.py" />
         <option value="$PROJECT_DIR$/keyboard_mouse.py" />
       </list>
     </option>
@@ -427,16 +428,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mygame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tiles.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1083">
@@ -482,8 +473,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hero_star.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1007">
-          <caret line="94" column="79" selection-start-line="94" selection-start-column="79" selection-end-line="94" selection-end-column="79" />
+        <state relative-caret-position="-589">
+          <caret line="152" column="31" selection-start-line="152" selection-start-column="31" selection-end-line="152" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mygame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
@@ -492,14 +493,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/keyboard_mouse.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="121" selection-start-line="17" selection-start-column="121" selection-end-line="17" selection-end-column="121" />
+        <state relative-caret-position="342">
+          <caret line="18" column="110" selection-start-line="18" selection-start-column="110" selection-end-line="18" selection-end-column="110" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
-            <marker date="1543239215552" expanded="true" signature="242:306" ph="..." />
-            <marker date="1543239215552" expanded="true" signature="420:683" ph="..." />
-            <marker date="1543239215552" expanded="true" signature="947:948" ph="..." />
-            <marker date="1543239215552" expanded="true" signature="947:949" ph="..." />
+            <marker date="1543240451874" expanded="true" signature="242:306" ph="..." />
+            <marker date="1543240451874" expanded="true" signature="420:769" ph="..." />
+            <marker date="1543240451874" expanded="true" signature="1033:1034" ph="..." />
+            <marker date="1543240451874" expanded="true" signature="1033:1035" ph="..." />
           </folding>
         </state>
       </provider>

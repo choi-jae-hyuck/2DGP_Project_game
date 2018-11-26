@@ -150,7 +150,7 @@ next_state_table = {
 
 class HERO:
     def __init__(self):
-        self.x, self.y= 525,125
+        self.x, self.y= 500,100
         self.drax, self.dray=0,0
         self.state=0
         self.frame=0
