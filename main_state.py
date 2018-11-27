@@ -94,8 +94,10 @@ def handle_events():
 def update():
     for game_object in game_world.all_objects():
         game_object.update()
-        if game_object.HP<0:
-            game_world.remove_object(game_object)
+        for fiser in fish:
+            if fiser.HP<0:
+                fish.remove(fiser)
+                game_world.remove_object(fiser)
 
 
 

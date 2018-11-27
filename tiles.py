@@ -45,13 +45,12 @@ class Tile:
         self.dungeon.gen_level()
         self.x=0 //50
         self.y=0 //50
-        self.HP=1#dummy
         self.scrollx=0
         self.scrolly=0
         self.mapstage=1
 
     def draw(self):
-        #map 은 60x45임
+        #map 은 y60 x45임
         wall = Wall()
         floor = Floor()
         stair = Stair()
