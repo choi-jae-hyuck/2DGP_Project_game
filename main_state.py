@@ -89,6 +89,8 @@ def handle_events():
                 mouse_x,mouse_y = event.x, get_canvas_height() - 1 - event.y
         elif event.type == SDL_MOUSEBUTTONDOWN and event.button == SDL_BUTTON_LEFT and mouse.select ==True:
             hero.attack()
+            for fiser in fish:
+                fiser.hit(mouse_x,mouse_y)
 
         else:
             hero.handle_event(event)

@@ -107,5 +107,8 @@ class Fish:
     def handle_event(self, event):
        pass
 
+    def hit(self,x,y):
+        pass
+
     def add_event(self, event):
       pass

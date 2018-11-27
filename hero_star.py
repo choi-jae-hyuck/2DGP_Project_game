@@ -123,7 +123,7 @@ class RunState:
 class AttackState:
     @staticmethod
     def enter(hero, event):
-        print(1)
+        hero.timer = 10
         pass
 
     @staticmethod
@@ -133,7 +133,13 @@ class AttackState:
 
     @staticmethod
     def do(hero):
+        game_framework.turn = False
         hero.frame = (hero.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
+        if hero.timer > 0:
+            hero.timer -= 1
+        elif hero.timer == 0:
+            game_framework.turn = True
+            hero.add_event(W_UP)
 
     @staticmethod
     def draw(hero):
