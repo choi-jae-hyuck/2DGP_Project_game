@@ -5,7 +5,7 @@ import game_world
 
 import main_state # map.값 확인후 제거
 
-W_DOWN, A_DOWN, S_DOWN, D_DOWN,W_UP, A_UP, S_UP, D_UP= range(8)
+W_DOWN, A_DOWN, S_DOWN, D_DOWN,W_UP, A_UP, S_UP, D_UP,Left_Click= range(9)
 
 TIME_PER_ACTION = 0.5
 ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
@@ -20,6 +20,7 @@ key_event_table = {
     (SDL_KEYUP, SDLK_a): A_UP,
     (SDL_KEYUP, SDLK_s): S_UP,
     (SDL_KEYUP, SDLK_d): D_UP,
+    (SDL_MOUSEBUTTONDOWN,SDL_BUTTON_LEFT): Left_Click
 }
 class IdleState:
 
@@ -122,6 +123,7 @@ class RunState:
 class AttackState:
     @staticmethod
     def enter(hero, event):
+        print(1)
         pass
 
     @staticmethod
@@ -136,14 +138,14 @@ class AttackState:
     @staticmethod
     def draw(hero):
         if hero.dir == True:
-            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 405 * 1, 32, 57, -3.141592, 'v', hero.drax + 25,100 + hero.dray + 25, 40, 50)
+            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 405 * 1, 32, 57, -3.141592, 'v', hero.drax + 25,100 + hero.dray + 25, 34, 50)
         else:
-            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 405 * 1, 32, 57, 180*-3.141592, ' ', hero.drax + 25,100 + hero.dray + 25, 40, 50)
+            hero.image.clip_composite_draw(int(hero.frame) * 33 + 1, 405 * 1, 32, 57, 180*-3.141592, ' ', hero.drax + 25,100 + hero.dray + 25, 34, 50)
 
 next_state_table = {
-    IdleState: {W_DOWN: RunState, A_DOWN: RunState, S_DOWN: RunState, D_DOWN: RunState,W_UP: IdleState, A_UP: IdleState, S_UP: IdleState, D_UP: IdleState,},
-    RunState: {W_DOWN: IdleState, A_DOWN: IdleState, S_DOWN: IdleState, D_DOWN: IdleState,W_UP: IdleState, A_UP: IdleState, S_UP: IdleState, D_UP: IdleState},
-    AttackState:{W_DOWN: IdleState, A_DOWN: IdleState, S_DOWN: IdleState, D_DOWN: IdleState,W_UP: IdleState, A_UP: IdleState, S_UP: IdleState, D_UP: IdleState}
+    IdleState: {W_DOWN: RunState, A_DOWN: RunState, S_DOWN: RunState, D_DOWN: RunState,W_UP: IdleState, A_UP: IdleState, S_UP: IdleState, D_UP: IdleState,Left_Click:AttackState},
+    RunState: {W_DOWN: IdleState, A_DOWN: IdleState, S_DOWN: IdleState, D_DOWN: IdleState,W_UP: IdleState, A_UP: IdleState, S_UP: IdleState, D_UP: IdleState,Left_Click:IdleState},
+    AttackState:{W_DOWN: IdleState, A_DOWN: IdleState, S_DOWN: IdleState, D_DOWN: IdleState,W_UP: IdleState, A_UP: IdleState, S_UP: IdleState, D_UP: IdleState,Left_Click:IdleState}
 }
 
 class HERO:
@@ -169,6 +171,9 @@ class HERO:
 
     def draw(self):
         self.cur_state.draw(self)
+
+    def attack(self):
+        self.add_event(Left_Click)
 
 
     def add_event(self, event):

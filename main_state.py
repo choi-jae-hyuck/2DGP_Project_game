@@ -88,7 +88,7 @@ def handle_events():
         elif event.type == SDL_MOUSEMOTION:
                 mouse_x,mouse_y = event.x, get_canvas_height() - 1 - event.y
         elif event.type == SDL_MOUSEBUTTONDOWN and event.button == SDL_BUTTON_LEFT and mouse.select ==True:
-            print(1)
+            hero.attack()
 
         else:
             hero.handle_event(event)
