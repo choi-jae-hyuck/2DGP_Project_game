@@ -123,6 +123,7 @@ class RunState:
 class AttackState:
     @staticmethod
     def enter(hero, event):
+        hero.bgm.play(1)
         hero.timer = 10
         pass
 
@@ -169,6 +170,8 @@ class HERO:
         self.event_que = []
         self.cur_state = IdleState
         self.cur_state.enter(self, None)
+        self.bgm = load_wav('Resource\Sound\punch1.wav')
+        self.bgm.set_volume(30)
     def handle_event(self, event):
         if (event.type, event.key) in key_event_table:
             key_event = key_event_table[(event.type, event.key)]
