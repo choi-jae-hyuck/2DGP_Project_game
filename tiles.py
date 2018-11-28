@@ -48,6 +48,9 @@ class Tile:
         self.scrollx=0
         self.scrolly=0
         self.mapstage=1
+        self.bgm = load_music('Resource\Sound\Background.mp3')
+        self.bgm.set_volume(30)
+        self.bgm.repeat_play()
 
     def draw(self):
         #map 은 y60 x45임
