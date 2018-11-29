@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9cc58b60-1f79-4c61-9572-35e7a2b92bca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fish.py" beforeDir="false" afterPath="$PROJECT_DIR$/fish.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hero_star.py" beforeDir="false" afterPath="$PROJECT_DIR$/hero_star.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tiles.py" beforeDir="false" afterPath="$PROJECT_DIR$/tiles.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,12 +70,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="8949" />
+          <entry key="py" value="9105" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="8949" />
+          <entry key="Python" value="9105" />
         </counts>
       </usages-collector>
     </session>
@@ -88,8 +85,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_state.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="104" column="50" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
+            <state relative-caret-position="402">
+              <caret line="109" column="8" selection-start-line="109" selection-start-column="4" selection-end-line="109" selection-end-column="8" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -122,16 +119,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fish.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="26" column="53" lean-forward="true" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
+            <state relative-caret-position="380">
+              <caret line="38" column="84" selection-start-line="38" selection-start-column="84" selection-end-line="38" selection-end-column="84" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
-                <marker date="1543495662568" expanded="true" signature="2314:2323" ph="..." />
-                <marker date="1543495662568" expanded="true" signature="5106:5111" ph="..." />
-                <marker date="1543495662568" expanded="true" signature="5345:5351" ph="..." />
+                <marker date="1543498913815" expanded="true" signature="2345:2354" ph="..." />
+                <marker date="1543498913815" expanded="true" signature="5113:5118" ph="..." />
+                <marker date="1543498913815" expanded="true" signature="5352:5358" ph="..." />
               </folding>
             </state>
           </provider>
@@ -140,7 +137,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hero_star.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3116">
+            <state relative-caret-position="-2030">
               <caret line="43" column="19" lean-forward="true" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -162,11 +159,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tiles.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="49" column="23" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
+            <state relative-caret-position="19">
+              <caret line="49" column="23" lean-forward="true" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -185,6 +182,7 @@
       <find>main_state</find>
       <find>idle</find>
       <find>print</find>
+      <find>draw</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -202,9 +200,9 @@
         <option value="$PROJECT_DIR$/game_world.py" />
         <option value="$PROJECT_DIR$/keyboard_mouse.py" />
         <option value="$PROJECT_DIR$/main_state.py" />
-        <option value="$PROJECT_DIR$/fish.py" />
         <option value="$PROJECT_DIR$/hero_star.py" />
         <option value="$PROJECT_DIR$/tiles.py" />
+        <option value="$PROJECT_DIR$/fish.py" />
       </list>
     </option>
   </component>
@@ -471,10 +469,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tiles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="49" column="23" lean-forward="true" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main_state.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="104" column="50" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
+        <state relative-caret-position="402">
+          <caret line="109" column="8" selection-start-line="109" selection-start-column="4" selection-end-line="109" selection-end-column="8" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -483,7 +488,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hero_star.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3116">
+        <state relative-caret-position="-2030">
           <caret line="43" column="19" lean-forward="true" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
@@ -494,21 +499,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fish.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="26" column="53" lean-forward="true" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
+        <state relative-caret-position="380">
+          <caret line="38" column="84" selection-start-line="38" selection-start-column="84" selection-end-line="38" selection-end-column="84" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <marker date="1543495662568" expanded="true" signature="2314:2323" ph="..." />
-            <marker date="1543495662568" expanded="true" signature="5106:5111" ph="..." />
-            <marker date="1543495662568" expanded="true" signature="5345:5351" ph="..." />
+            <marker date="1543498913815" expanded="true" signature="2345:2354" ph="..." />
+            <marker date="1543498913815" expanded="true" signature="5113:5118" ph="..." />
+            <marker date="1543498913815" expanded="true" signature="5352:5358" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tiles.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="49" column="23" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
         </state>
       </provider>
     </entry>

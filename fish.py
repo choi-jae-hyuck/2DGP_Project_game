@@ -17,28 +17,28 @@ class Fish:
         self.frame=0
         self.timer=0
         self.image=load_image('Resource\character\enemy1.png')
-
+        self.Hitting_draw_opacify = 5 *0.01
         self.dir=True
         self.attack=False
         self.setting=False
         self.doing_first=True
 
     def draw(self):
-
+        self.image.opacify(self.Hitting_draw_opacify)
         if self.dir is True and self.y+25-main_state.tiles.scrolly*50+100>100:
             if self.state is 0:# idle
-                self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, -3.141592, 'v', self.x+25-main_state.tiles.scrollx*50,self.y+25-main_state.tiles.scrolly*50+100,45, 45)
+                self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, 180*3.141592/180, 'v', self.x+25-main_state.tiles.scrollx*50,self.y+25-main_state.tiles.scrolly*50+100,45, 45)
             if self.state is 1:# running
-                self.image.clip_composite_draw(int(self.frame) * 35 ,668, 36, 38, -3.141592, 'v', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100,45,45)
+                self.image.clip_composite_draw(int(self.frame) * 35 ,668, 36, 38, 135*3.141592/180, 'v', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100,45,45)
             elif self.state is 2: #attack
-                self.image.clip_composite_draw(int(self.frame) * 29+1,708 * 1, 29, 31, -3.141592, 'v', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100,45,45)
+                self.image.clip_composite_draw(int(self.frame) * 29+1,708 * 1, 29, 31,180* 3.141592/180, 'v', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100,45,45)
         elif  self.dir is False and self.y+25-main_state.tiles.scrolly*50+100>100:
             if self.state is 0:  # idle
-                self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, 180 * -3.141592, ' ', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100, 45, 45)
+                self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, 0 * 3.141592/180, ' ', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100, 45, 45)
             if self.state is 1:  # running
-                self.image.clip_composite_draw(int(self.frame) * 35, 668, 36, 38, 180 * -3.141592, ' ', self.x+25-main_state.tiles.scrollx*50,  self.y+25-main_state.tiles.scrolly*50+100, 45, 45)
+                self.image.clip_composite_draw(int(self.frame) * 35, 668, 36, 38, 33 * 3.141592/180, ' ', self.x+25-main_state.tiles.scrollx*50,  self.y+25-main_state.tiles.scrolly*50+100, 45, 45)
             elif self.state is 2:  # attack
-                self.image.clip_composite_draw(int(self.frame) * 29 + 1, 708 * 1, 29, 31, 180 * -3.141592, ' ', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100, 45, 45)
+                self.image.clip_composite_draw(int(self.frame) * 29 + 1, 708 * 1, 29, 31, 0 * 3.141592/180, ' ', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100, 45, 45)
 
 
     def update(self):
@@ -89,7 +89,7 @@ class Fish:
 
 
         elif game_framework.turn is True:
-            self.state=0
+
             while True:
                 self.doing_first=True
                 self.movement = random.randint(1, 4)  # 상하좌우
