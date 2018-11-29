@@ -43,6 +43,7 @@ class Tile:
     def __init__(self):
         self.dungeon=map.Generator()
         self.dungeon.gen_level()
+        self.back_image=load_image('Resource\dungeontile\Back.png')
         self.x=0 //50
         self.y=0 //50
         self.scrollx=0
@@ -69,6 +70,8 @@ class Tile:
             self.scrolly=35
         else :
             self.scrolly=0
+
+        self.back_image.clip_draw(0, 0, 41, 41,400,300,800, 600)
 
         for i in range(0,0+10):
             for j in range(0,0+16):
