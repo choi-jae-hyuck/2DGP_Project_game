@@ -49,6 +49,11 @@ class Fish:
         elif self.state is 2:
             self.frame=(self.frame)%5
 
+        if main_state.hero.x<self.x:
+            self.dir = False
+        else:
+            self.dir =True
+
 
         if game_framework.turn is False:
 
