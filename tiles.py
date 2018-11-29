@@ -15,11 +15,11 @@ class Floor:
     def __init__(self):
         if Floor.image1==None :
             Floor.image1=load_image('Resource\dungeontile\dungeon_floor.png')
-        elif Floor.image2==None :
+        if Floor.image2==None :
             Floor.image2 = load_image('Resource\dungeontile\dungeon_floor2.png')
-        elif Floor.image3 == None:
+        if Floor.image3 == None:
             Floor.image3 = load_image('Resource\dungeontile\dungeon_floor3.png')
-        elif Floor.image4 == None:
+        if Floor.image4 == None:
             Floor.image4 = load_image('Resource\dungeontile\dungeon_floor4.png')
 class Stair:
     image1=None
@@ -27,7 +27,7 @@ class Stair:
     def __init__(self):
         if Stair.image1==None:
             Stair.image1 = load_image('Resource\dungeontile\dungeon_stair.png')
-        elif Stair.image2 == None:
+        if Stair.image2 == None:
             Stair.image2 = load_image('Resource\dungeontile\dungeon_stair2.png')
 
 class Wall:
@@ -36,7 +36,7 @@ class Wall:
     def __init__(self):
         if Wall.image1==None:
             Wall.image1 = load_image('Resource\dungeontile\dungeon_wall.png')
-        elif Wall.image2==None:
+        if Wall.image2==None:
             Wall.image2 = load_image('Resource\dungeontile\dungeon_wall2.png')
 
 class Tile:

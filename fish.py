@@ -17,12 +17,14 @@ class Fish:
         self.frame=0
         self.timer=0
         self.image=load_image('Resource\character\enemy1.png')
+
         self.dir=True
         self.attack=False
         self.setting=False
         self.doing_first=True
 
     def draw(self):
+
         if self.dir is True and self.y+25-main_state.tiles.scrolly*50+100>100:
             if self.state is 0:# idle
                 self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, -3.141592, 'v', self.x+25-main_state.tiles.scrollx*50,self.y+25-main_state.tiles.scrolly*50+100,45, 45)
@@ -87,6 +89,7 @@ class Fish:
 
 
         elif game_framework.turn is True:
+            self.state=0
             while True:
                 self.doing_first=True
                 self.movement = random.randint(1, 4)  # 상하좌우
@@ -115,6 +118,7 @@ class Fish:
     def hit(self,x,y):
         if (main_state.tiles.scrollx*50+x)//50 is self.x//50 and(main_state.tiles.scrolly*50+y-100)//50 is self.y//50:
             self.HP -=5
+            self.state=1
 
     def add_event(self, event):
       pass
