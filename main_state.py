@@ -100,8 +100,9 @@ def update():
     for game_object in game_world.all_objects():
         game_object.update()
         for fiser in fish:
-            if fiser.HP<0:
+            if fiser.HP<=0:
                 fish.remove(fiser)
+                number[fiser.y//50][fiser.x//50]=0
                 game_world.remove_object(fiser)
 
 

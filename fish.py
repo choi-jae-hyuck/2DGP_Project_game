@@ -113,7 +113,8 @@ class Fish:
        pass
 
     def hit(self,x,y):
-        pass
+        if (main_state.tiles.scrollx*50+x)//50 is self.x//50 and(main_state.tiles.scrolly*50+y-100)//50 is self.y//50:
+            self.HP -=5
 
     def add_event(self, event):
       pass
