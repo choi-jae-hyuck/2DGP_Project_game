@@ -124,7 +124,7 @@ class AttackState:
     @staticmethod
     def enter(hero, event):
         hero.bgm.play(1)
-        hero.timer = 10
+        hero.timer = 9
         pass
 
     @staticmethod
@@ -182,6 +182,7 @@ class HERO:
         self.cur_state.draw(self)
 
     def attack(self):
+        game_framework.turn = False
         self.add_event(Left_Click)
 
 

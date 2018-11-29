@@ -58,7 +58,6 @@ class Fish:
 
 
         if game_framework.turn is False:
-
             if self.attack is True:
                 pass
             elif self.attack is False:
@@ -89,7 +88,7 @@ class Fish:
 
 
         elif game_framework.turn is True:
-
+            self.state = 0
             while True:
                 self.doing_first=True
                 self.movement = random.randint(1, 4)  # 상하좌우
