@@ -166,7 +166,7 @@ class HERO:
         self.horizontal=0
         self.dir = True #true-right false-left
         self.timer=0
-        self.image=load_image('Resource\character\hero.png')
+        self.image=load_image('Resource\character\Hero2.png')
         self.event_que = []
         self.cur_state = IdleState
         self.cur_state.enter(self, None)

@@ -17,7 +17,7 @@ class Fish:
         self.frame=0
         self.timer=0
         self.image=load_image('Resource\character\enemy1.png')
-        self.Hitting_draw_opacify = 5 *0.01
+        self.Hitting_draw_opacify = 1
         self.dir=True
         self.attack=False
         self.setting=False
