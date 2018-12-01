@@ -158,7 +158,7 @@ next_state_table = {
 class HERO:
     def __init__(self):
         self.x, self.y= 500,100
-        self.HP=100
+        self.HP,self.recovery_HP=100,0
         self.drax, self.dray=0,0
         self.state=0
         self.frame=0
@@ -203,6 +203,12 @@ class HERO:
             self.dray=self.y-1750
         else :
             self.dray=self.y
+        if game_framework.turn is False and self.HP<100:
+            self.recovery_HP+=1
+        if self.recovery_HP > 30 and self.HP<100-3:
+            self.recovery_HP-=30
+            self.HP +=3
+
         self.cur_state.do(self)
         if len(self.event_que) > 0:
             event = self.event_que.pop()

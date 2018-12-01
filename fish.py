@@ -110,9 +110,8 @@ class Fish:
                     if main_state.number[self.y // 50][self.x // 50 + 1] is 0:
                         break
 
-            if main_state.hero.x-50<=self.x <=main_state.hero.x+50:
-                if main_state.hero.y-50<=self.y <=main_state.hero.y+50:
-                    self.attack=True
+            if main_state.hero.x-50<=self.x <=main_state.hero.x+50 and main_state.hero.y-50<=self.y <=main_state.hero.y+50:
+                self.attack=True
             else :
                 self.attack=False
 

@@ -24,11 +24,14 @@ class Floor:
 class Stair:
     image1=None
     image2=None
+    lock=None
     def __init__(self):
         if Stair.image1==None:
             Stair.image1 = load_image('Resource\dungeontile\dungeon_stair.png')
         if Stair.image2 == None:
             Stair.image2 = load_image('Resource\dungeontile\dungeon_stair2.png')
+        if Stair.lock == None:
+            Stair.lock = load_image('Resource\dungeontile\lock.png')
 
 class Wall:
     image1=None
