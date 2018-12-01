@@ -18,8 +18,14 @@ number =[]
 fish=[]
 global mouse_x,mouse_y
 mouse_x,mouse_y=0,0
+bgm=None
+
 
 def enter():
+    global bgm
+    bgm = load_music('Resource\Sound\Background.mp3')
+    bgm.set_volume(30)
+    bgm.repeat_play()
     global hero, tiles,fish
     tiles= Tile()
     hero = HERO()
