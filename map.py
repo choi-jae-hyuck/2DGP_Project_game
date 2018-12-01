@@ -270,6 +270,13 @@ class Generator():
  
                     if self.level[row + 1][col + 1] == 'stone':
                         self.level[row + 1][col + 1] = 'wall'
+
+        while (True):
+            row = random.randint(1, self.height - 1)
+            col = random.randint(1, self.height - 1)
+            if self.level[row][col] == 'floor':
+                self.level[row][col] = 'stair'
+                break
  
     def gen_tiles_level(self):
  
