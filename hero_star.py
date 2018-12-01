@@ -184,7 +184,8 @@ class HERO:
     def attack(self):
         game_framework.turn = False
         self.add_event(Left_Click)
-
+    def hit(self,power):
+        self.HP -=power;
 
     def add_event(self, event):
         self.event_que.insert(0, event)

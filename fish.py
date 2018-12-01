@@ -89,6 +89,7 @@ class Fish:
 
         elif game_framework.turn is True:
             self.state = 0
+            self.Hitting_draw_opacify =1
             while True:
                 self.doing_first=True
                 self.movement = random.randint(1, 4)  # 상하좌우
@@ -118,6 +119,7 @@ class Fish:
         if (main_state.tiles.scrollx*50+x)//50 is self.x//50 and(main_state.tiles.scrolly*50+y-100)//50 is self.y//50:
             self.HP -=5
             self.state=1
+            self.Hitting_draw_opacify=0.7
 
     def add_event(self, event):
       pass

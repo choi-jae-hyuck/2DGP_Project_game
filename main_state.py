@@ -6,6 +6,7 @@ from pico2d import *
 import game_framework
 import game_world
 import keyboard_mouse
+import game_over_state
 
 from hero_star import HERO
 from tiles import Tile
@@ -105,6 +106,8 @@ def handle_events():
 def update():
     for game_object in game_world.all_objects():
         game_object.update()
+        if hero.HP<0+1:
+            game_framework.push_state(game_over_state)
         for fiser in fish:
             if fiser.HP<=0:
                 fish.remove(fiser)
