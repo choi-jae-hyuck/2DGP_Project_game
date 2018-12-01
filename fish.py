@@ -31,14 +31,14 @@ class Fish:
             if self.state is 1:# running
                 self.image.clip_composite_draw(int(self.frame) * 35 ,668, 36, 38, 135*3.141592/180, 'v', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100,45,45)
             elif self.state is 2: #attack
-                self.image.clip_composite_draw(int(self.frame) * 29+1,708 * 1, 29, 31,180* 3.141592/180, 'v', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100,45,45)
+                self.image.clip_composite_draw(int(self.frame) * 29+1,708 * 1, 27, 31,180* 3.141592/180, 'v', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100,45,45)
         elif  self.dir is False and self.y+25-main_state.tiles.scrolly*50+100>100:
             if self.state is 0:  # idle
                 self.image.clip_composite_draw(int(self.frame) * 31 + 2, 743, 31, 31, 0 * 3.141592/180, ' ', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100, 45, 45)
             if self.state is 1:  # running
                 self.image.clip_composite_draw(int(self.frame) * 35, 668, 36, 38, 33 * 3.141592/180, ' ', self.x+25-main_state.tiles.scrollx*50,  self.y+25-main_state.tiles.scrolly*50+100, 45, 45)
             elif self.state is 2:  # attack
-                self.image.clip_composite_draw(int(self.frame) * 29 + 1, 708 * 1, 29, 31, 0 * 3.141592/180, ' ', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100, 45, 45)
+                self.image.clip_composite_draw(int(self.frame) * 29 + 1, 708 * 1, 27, 31, 0 * 3.141592/180, ' ', self.x+25-main_state.tiles.scrollx*50, self.y+25-main_state.tiles.scrolly*50+100, 45, 45)
 
 
     def update(self):
@@ -59,6 +59,10 @@ class Fish:
 
         if game_framework.turn is False:
             if self.attack is True:
+                self.state=2
+                if self.doing_first is True:
+                    main_state.hero.hit(5)
+                    self.doing_first=False
                 pass
             elif self.attack is False:
                 if self.movement is 1:

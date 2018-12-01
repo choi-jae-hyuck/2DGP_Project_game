@@ -49,6 +49,9 @@ class Tile:
         self.UI_image = None
         if self.UI_image is None:
             self.UI_image = load_image('Resource\dungeontile\Board_ui.png')
+        self.HP_bar=None
+        if self.HP_bar is None:
+            self.HP_bar = load_image('Resource\dungeontile\HP_bar.png')
         self.x=0 //50
         self.y=0 //50
         self.scrollx=0
@@ -75,6 +78,8 @@ class Tile:
 
         self.back_image.clip_draw(0, 0, 41, 41,400,300,800, 600)
         self.UI_image.clip_draw(10, 40, 245, 75, 400, 50, 850, 100)
+        self.HP_bar.clip_draw(50, 90, 3, 3, 140+main_state.hero.HP*0.7, 60, 1.7* main_state.hero.HP, 40)
+        self.HP_bar.clip_draw(20, 50, 450, 120, 200, 60, 200, 50)
 
         for i in range(0,0+10):
             for j in range(0,0+16):
