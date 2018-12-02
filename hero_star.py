@@ -60,38 +60,42 @@ class RunState:
         hero.vertical = 0
         hero.horizontal =0
         if event == W_DOWN:
-            if main_state.number[int(hero.y//50)+1][int(hero.x//50)] is 0:
-                main_state.number[int(hero.y // 50) + 1][int(hero.x // 50)] = 1
-                main_state.number[int(hero.y // 50)][int(hero.x // 50)] = 0
+            if main_state.number[int(hero.y//50)+1][int(hero.x//50)] %5 is 0:
+                if main_state.number[int(hero.y // 50) + 1][int(hero.x // 50)]  is 0:
+                    main_state.number[int(hero.y // 50) + 1][int(hero.x // 50)] = 1
+                    main_state.number[int(hero.y // 50)][int(hero.x // 50)] = 0
                 hero.horizontal = 5
         elif event == A_DOWN:
-            if main_state.number[int(hero.y // 50)][int(hero.x // 50)-1] is 0:
-                main_state.number[int(hero.y // 50)][int(hero.x // 50)-1] = 1
-                main_state.number[int(hero.y // 50)][int(hero.x // 50)] = 0
+            if main_state.number[int(hero.y // 50)][int(hero.x // 50)-1] %5 is 0:
+                if main_state.number[int(hero.y // 50)][int(hero.x // 50) - 1] is 0:
+                    main_state.number[int(hero.y // 50)][int(hero.x // 50)-1] = 1
+                    main_state.number[int(hero.y // 50)][int(hero.x // 50)] = 0
                 hero.vertical = -5
             hero.dir = False
         elif event == S_DOWN:
-            if main_state.number[int(hero.y // 50)-1][int(hero.x // 50)] is 0:
-                main_state.number[int(hero.y // 50) - 1][int(hero.x // 50)] = 1
-                main_state.number[int(hero.y // 50)][int(hero.x // 50)] = 0
+            if main_state.number[int(hero.y // 50)-1][int(hero.x // 50)] %5 is 0:
+                if main_state.number[int(hero.y // 50) - 1][int(hero.x // 50)]  is 0:
+                    main_state.number[int(hero.y // 50) - 1][int(hero.x // 50)] = 1
+                    main_state.number[int(hero.y // 50)][int(hero.x // 50)] = 0
                 hero.horizontal = -5
         elif event == D_DOWN:
-            if main_state.number[int(hero.y // 50)][int(hero.x // 50)+1] is 0:
-                main_state.number[int(hero.y // 50)][int(hero.x // 50)+1] = 1
-                main_state.number[int(hero.y // 50)][int(hero.x // 50)] = 0
+            if main_state.number[int(hero.y // 50)][int(hero.x // 50)+1] %5 is 0:
+                if main_state.number[int(hero.y // 50)][int(hero.x // 50) + 1] is 0:
+                    main_state.number[int(hero.y // 50)][int(hero.x // 50)+1] = 1
+                    main_state.number[int(hero.y // 50)][int(hero.x // 50)] = 0
                 hero.vertical = 5
             hero.dir = True
         elif event == W_UP:
-            if main_state.number[int(hero.y//50)+1][int(hero.x//50)] is 0:
+            if main_state.number[int(hero.y//50)+1][int(hero.x//50)] %5 is 0:
                 hero.horizontal = 5
         elif event == A_UP:
-            if main_state.number[int(hero.y // 50)][int(hero.x // 50)-1] is 0:
+            if main_state.number[int(hero.y // 50)][int(hero.x // 50)-1] %5 is 0:
                 hero.vertical = -5
         elif event == S_UP:
-            if main_state.number[int(hero.y // 50) - 1][int(hero.x // 50)] is 0:
+            if main_state.number[int(hero.y // 50) - 1][int(hero.x // 50)] %5 is 0:
                 hero.horizontal = -5
         elif event == D_UP:
-            if main_state.number[int(hero.y // 50)][int(hero.x // 50) + 1] is 0:
+            if main_state.number[int(hero.y // 50)][int(hero.x // 50) + 1] %5 is 0:
                 hero.vertical = 5
         hero.timer = 10
 
@@ -205,8 +209,8 @@ class HERO:
             self.dray=self.y
         if game_framework.turn is False and self.HP<100:
             self.recovery_HP+=1
-        if self.recovery_HP > 30 and self.HP<100-3:
-            self.recovery_HP-=30
+        if self.recovery_HP > 60 and self.HP<100-3:
+            self.recovery_HP-=60
             self.HP +=3
 
         self.cur_state.do(self)
@@ -228,6 +232,8 @@ class STAR:
             self.image.clip_draw(self.frame * 34 +2,1485 * 1, 31, 31, self.x,100+ self.y)
         elif(self.state==1): #running
             self.image.clip_draw(self.frame * 34 +2,1451 * 1, 31, 31, self.x,100+ self.y)
+        elif (self.state == 2):  # running
+            self.image.clip_draw(self.frame * 34 + 2, 1451 * 1, 31, 31, self.x, 100 + self.y)
 
     def update(self):
         if(self.state==0):

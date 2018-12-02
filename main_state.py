@@ -11,26 +11,28 @@ import game_over_state
 from hero_star import HERO
 from tiles import Tile
 from fish import Fish
+from bird import Bird
 
 name = "MainState"
 hero = None
 mouse =None
 number =[]
 fish=[]
+bird=[]
 global mouse_x,mouse_y
 mouse_x,mouse_y=0,0
 bgm=None
-
 
 def enter():
     global bgm
     bgm = load_music('Resource\Sound\Background.mp3')
     bgm.set_volume(30)
     bgm.repeat_play()
-    global hero, tiles,fish
+    global hero, tiles,fish,bird
     tiles= Tile()
     hero = HERO()
     fish = [Fish() for i in range(10)]
+    bird =[Bird() for i in range(5)]
 
     global number
     number = [[0] * 60 for i in range(45)]
@@ -42,6 +44,8 @@ def enter():
                 number[i][j]=9
             elif tiles.dungeon.level[i][j] is 'wall':
                 number[i][j]=9
+            elif tiles.dungeon.level[i][j] is 'stair':
+                number[i][j]=5
 
     start = True
     while (start):#hero setting
@@ -61,12 +65,22 @@ def enter():
                 fish[k].y = i * 50
                 number[i][j] = 2
                 fish[k].setting=True
+    for k in range(5):
+        while(bird[k].setting is False):
+            i = random.randint(0+1, 45 - 1)
+            j = random.randint(0+1, 60 - 1)
+            if number[i][j] is 0 and bird[k].setting is False:
+                bird[k].x = j * 50
+                bird[k].y = i * 50
+                number[i][j] = 2
+                bird[k].setting=True
 
 
 
     game_world.add_object(tiles, 0)
     game_world.add_object(hero, 1)
     game_world.add_objects(fish,1)
+    game_world.add_objects(bird,1)
 
     global mouse
     mouse = keyboard_mouse.Mouse()
@@ -98,6 +112,8 @@ def handle_events():
             hero.attack()
             for fiser in fish:
                 fiser.hit(mouse_x,mouse_y)
+            for birds in bird:
+                birds.hit(mouse_x,mouse_y)
 
         else:
             hero.handle_event(event)
@@ -106,15 +122,20 @@ def handle_events():
 def update():
     for game_object in game_world.all_objects():
         game_object.update()
-        if hero.HP<0+1:
-            game_framework.push_state(game_over_state)
         for fiser in fish:
             if fiser.HP<=0:
                 fish.remove(fiser)
                 number[fiser.y//50][fiser.x//50]=0
                 game_world.remove_object(fiser)
-
-
+        for birds in bird:
+            if birds.HP<=0:
+                bird.remove(birds)
+                number[birds.y//50][birds.x//50]=0
+                game_world.remove_object(birds)
+    if number[int(hero.y // 50)][int(hero.x // 50)] is 5:
+        game_framework.push_state(game_over_state)
+    if hero.HP < 0 + 1:
+        game_framework.push_state(game_over_state)
 
 def draw():
     clear_canvas()
