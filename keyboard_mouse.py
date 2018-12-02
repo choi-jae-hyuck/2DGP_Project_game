@@ -34,3 +34,12 @@ class Keyboard:
         self.image=None
         if self.image is None:
             self.image=load_image('Resource\keyboard.png')
+
+    def draw(self):
+        self.image.clip_composite_draw(50, 99, 24, 26, 0, ' ', 415-30, 65, 30, 30)  # s
+        self.image.clip_composite_draw(36, 70, 24, 26, 0, ' ', 380-30, 30, 30, 30) #a
+        self.image.clip_composite_draw(64, 70, 24, 26, 0, ' ', 415-30, 30, 30, 30)  # s
+        self.image.clip_composite_draw(92, 70, 24, 26, 0, ' ', 450-30, 30, 30, 30)  # d
+
+    def update(self):
+        pass

@@ -20,8 +20,8 @@ mouse =None
 number =[]
 fish=[]
 bird=[]
-global mouse_x,mouse_y
-mouse_x,mouse_y=0,0
+global mouse_x,mouse_y,keyboard
+keyboard,mouse_x,mouse_y=None,0,0
 bgm=None
 
 def enter():
@@ -83,9 +83,11 @@ def enter():
     game_world.add_objects(fish,1)
     game_world.add_objects(bird,1)
 
-    global mouse
+    global mouse,keyboard
     mouse = keyboard_mouse.Mouse()
+    keyboard=keyboard_mouse.Keyboard()
     game_world.add_object(mouse, 1)
+    game_world.add_object(keyboard,1)
     hide_cursor()
 
 def exit():
