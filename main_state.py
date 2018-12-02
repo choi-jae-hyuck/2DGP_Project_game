@@ -7,6 +7,7 @@ import game_framework
 import game_world
 import keyboard_mouse
 import game_over_state
+import game_end_state
 
 from hero_star import HERO
 from tiles import Tile
@@ -133,7 +134,7 @@ def update():
                 number[birds.y//50][birds.x//50]=0
                 game_world.remove_object(birds)
     if number[int(hero.y // 50)][int(hero.x // 50)] is 5:
-        game_framework.push_state(game_over_state)
+        game_framework.push_state(game_end_state)
     if hero.HP < 0 + 1:
         game_framework.push_state(game_over_state)
 
