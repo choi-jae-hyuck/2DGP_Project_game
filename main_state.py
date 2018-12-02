@@ -23,10 +23,13 @@ bird=[]
 global mouse_x,mouse_y,keyboard
 keyboard,mouse_x,mouse_y=None,0,0
 bgm=None
+open_lock=None
 
 def enter():
-    global bgm
+    global bgm,open_lock
     bgm = load_music('Resource\Sound\Background.mp3')
+    open_lock=load_wav('Resource\Sound\Open_lock.wav')
+    open_lock.set_volume(128)
     bgm.set_volume(30)
     bgm.repeat_play()
     global hero, tiles,fish,bird
@@ -46,7 +49,7 @@ def enter():
             elif tiles.dungeon.level[i][j] is 'wall':
                 number[i][j]=9
             elif tiles.dungeon.level[i][j] is 'stair':
-                number[i][j]=5
+                number[i][j]=6
 
     start = True
     while (start):#hero setting
@@ -112,6 +115,7 @@ def handle_events():
         elif event.type == SDL_MOUSEMOTION:
                 mouse_x,mouse_y = event.x, get_canvas_height() - 1 - event.y
         elif event.type == SDL_MOUSEBUTTONDOWN and event.button == SDL_BUTTON_LEFT and mouse.select ==True and game_framework.turn is True:
+            game_framework.turn = False
             hero.attack()
             for fiser in fish:
                 fiser.hit(mouse_x,mouse_y)
@@ -130,15 +134,24 @@ def update():
                 fish.remove(fiser)
                 number[fiser.y//50][fiser.x//50]=0
                 game_world.remove_object(fiser)
+                tiles.lock -=1
         for birds in bird:
             if birds.HP<=0:
                 bird.remove(birds)
                 number[birds.y//50][birds.x//50]=0
                 game_world.remove_object(birds)
+                tiles.lock -= 1
     if number[int(hero.y // 50)][int(hero.x // 50)] is 5:
         game_framework.push_state(game_end_state)
     if hero.HP < 0 + 1:
         game_framework.push_state(game_over_state)
+    if tiles.lock<=0:
+        for i in range(0, 45):
+            for j in range(0, 60):
+                if number[i][j] is 6:
+                    number[i][j]=5
+                    open_lock.play(1)
+
 
 def draw():
     clear_canvas()

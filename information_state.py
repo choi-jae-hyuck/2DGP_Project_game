@@ -1,20 +1,16 @@
 import game_framework
 import main_state
-import information_state
 from pico2d import *
 
 
 name = "TitleState"
 image = None
 bgm=None
-
+information_time = 0.0
 
 def enter():
     global image,bgm
-    image=load_image('Resource\First.png')
-    bgm = load_music('Resource\Sound\Title.mp3')
-    bgm.set_volume(30)
-    bgm.repeat_play()
+    image=load_image('Resource\Information.png')
 
 
 def exit():
@@ -27,11 +23,6 @@ def handle_events():
     for event in events:
         if event.type == SDL_QUIT:
             game_framework.quit()
-        else:
-            if(event.type, event.key) ==(SDL_KEYDOWN,SDLK_ESCAPE):
-                game_framework.quit()
-            elif(event.type)== (SDL_KEYDOWN):
-                game_framework.change_state(information_state)
 
 
 def draw():
@@ -46,7 +37,13 @@ def draw():
 
 
 def update():
-    pass
+    global information_time
+    if (information_time > 3.0):
+        information_time = 0
+        # game_framework.quit()
+        game_framework.push_state(main_state)
+    delay(0.01)
+    information_time+= 0.01
 
 
 def pause():

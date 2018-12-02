@@ -60,6 +60,7 @@ class Tile:
         self.scrollx=0
         self.scrolly=0
         self.mapstage=1
+        self.lock=10
 
     def draw(self):
         #map 은 y60 x45임
@@ -91,8 +92,10 @@ class Tile:
                         Floor.image1.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)
                     elif self.dungeon.level[self.scrolly+i][self.scrollx+j]=='wall':
                         Wall.image1.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)
-                    elif self.dungeon.level[self.scrolly+i][self.scrollx+j] == 'stair':
+                    elif self.dungeon.level[self.scrolly+i][self.scrollx+j] == 'stair' and main_state.number[self.scrolly+i][self.scrollx+j] is 5:
                         Stair.image1.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)
+                    elif self.dungeon.level[self.scrolly+i][self.scrollx+j] == 'stair' and main_state.number[self.scrolly+i][self.scrollx+j] is 6:
+                        Stair.lock.clip_draw(0, 0, 156, 189, 25 + (j * 50), 125 + (i * 50), 50, 50)
                 elif self.mapstage == 2:
                     if self.dungeon.level[self.scrolly+i][self.scrollx+j]== 'floor':
                         Floor.image2.clip_draw(0, 0, 41, 41, 25 + (j * 50), 125 + (i * 50), 50, 50)

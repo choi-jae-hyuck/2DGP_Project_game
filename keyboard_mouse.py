@@ -15,13 +15,11 @@ class Mouse:
 
     def update(self):
         self.x, self.y= main_state.mouse_x,main_state.mouse_y
-        if main_state.hero.x-50<=self.x+main_state.tiles.scrollx*50<=main_state.hero.x+100:
-            if main_state.hero.y - 50 <= self.y-100 + main_state.tiles.scrolly * 50 <= main_state.hero.y + 100:
-                if main_state.number[int(self.y - 100 + main_state.tiles.scrolly * 50) // 50][
-                    int(self.x + main_state.tiles.scrollx * 50) // 50] is 2:
-                    self.select = True
-                else:
-                    self.select = False
+        if main_state.hero.x-50<=self.x+main_state.tiles.scrollx*50<=main_state.hero.x+100 and main_state.hero.y - 50 <= self.y-100 + main_state.tiles.scrolly * 50 <= main_state.hero.y + 100:
+            if main_state.number[int(self.y - 100 + main_state.tiles.scrolly * 50) // 50][int(self.x + main_state.tiles.scrollx * 50) // 50] is 2:
+                self.select = True
+            else:
+                self.select = False
     def draw(self):
         if self.select is True:
             self.fist.clip_composite_draw(0, 0, 111, 112, 0, ' ', self.x + 10, self.y - 15, 30, 30)

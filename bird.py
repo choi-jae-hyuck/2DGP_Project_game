@@ -61,7 +61,7 @@ class Bird:
             if self.attack is True:
                 self.state=2
                 if self.doing_first is True:
-                    main_state.hero.hit(20)
+                    main_state.hero.hit(40)
                     self.doing_first=False
                 pass
             elif self.attack is False:
